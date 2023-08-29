@@ -1,12 +1,12 @@
 // import { useState } from 'react'
 import './App.css'
-import PrimarySearchAppBar from './components/common/PrimarySearchAppBar'
+import Home from './views/Home'
 
 function App() {
 
   return (
     <>
-      <PrimarySearchAppBar />
+      <Home />
     </>
   )
 }
