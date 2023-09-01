@@ -1,0 +1,17 @@
+body {
+    background: #fafafa;
+    color: #333;
+}
+
+.top-bar {
+    a {
+
+        &,
+        &:visited,
+        &:focus,
+        &:focus-visible,
+        &:active {
+            color: #333;
+        }
+    }
+}

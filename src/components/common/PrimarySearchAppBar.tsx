@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { createContext } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -12,9 +13,11 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import MoreIcon from '@mui/icons-material/MoreVert';
+
+export const QueryContext = createContext('drive');
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -60,6 +63,7 @@ export default function PrimarySearchAppBar() {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
         React.useState<null | HTMLElement>(null);
+    const [searchQuery, setSearchQuery] = React.useState<string>('');
 
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -79,6 +83,19 @@ export default function PrimarySearchAppBar() {
 
     const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
         setMobileMoreAnchorEl(event.currentTarget);
+    };
+
+    const handleChange = (event) => {
+        console.log('onChange', event.target.value)
+        setSearchQuery(event.target.value);
+    };
+
+    const handleKeyDown = (event) => {
+        // confirm query and fetch products
+    };
+
+    const handleClick = (event) => {
+        // confirm query and fetch products
     };
 
     const menuId = 'primary-search-account-menu';
@@ -104,6 +121,7 @@ export default function PrimarySearchAppBar() {
     );
 
     const mobileMenuId = 'primary-search-account-menu-mobile';
+
     const renderMobileMenu = (
         <Menu
             anchorEl={mobileMoreAnchorEl}
@@ -123,7 +141,7 @@ export default function PrimarySearchAppBar() {
             <MenuItem>
                 <IconButton size="large" aria-label="show 4 new mails" color="inherit">
                     <Badge badgeContent={4} color="error">
-                        <MailIcon />
+                        <FavoriteBorderOutlinedIcon />
                     </Badge>
                 </IconButton>
                 <p>Messages</p>
@@ -135,7 +153,7 @@ export default function PrimarySearchAppBar() {
                     color="inherit"
                 >
                     <Badge badgeContent={17} color="error">
-                        <NotificationsIcon />
+                        <ShoppingCartOutlinedIcon />
                     </Badge>
                 </IconButton>
                 <p>Notifications</p>
@@ -157,7 +175,7 @@ export default function PrimarySearchAppBar() {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
+            <AppBar position="static" color="primary">
                 <Toolbar>
                     <IconButton
                         size="large"
@@ -174,22 +192,23 @@ export default function PrimarySearchAppBar() {
                         component="div"
                         sx={{ display: { xs: 'none', sm: 'block' } }}
                     >
-                        MUI
+                        <img src="/logo.svg" alt="Ecommerce logo" height={40} /> <Typography sx={{ fontWeight: 700, fontSize: 20, display: 'inline-block' }}>G-Commerce</Typography>
                     </Typography>
-                    <Search>
-                        <SearchIconWrapper>
-                            <SearchIcon />
-                        </SearchIconWrapper>
+                    <Search className='search-query'>
                         <StyledInputBase
-                            placeholder="Search…"
+                            className="search-query__input"
+                            placeholder="Search a product…"
                             inputProps={{ 'aria-label': 'search' }}
+                            onChange={handleChange}
+                            value={searchQuery}
                         />
+                        <SearchIcon onClick={handleClick} className="search-query__btn" />
                     </Search>
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
                             <Badge badgeContent={4} color="error">
-                                <MailIcon />
+                                <FavoriteBorderOutlinedIcon />
                             </Badge>
                         </IconButton>
                         <IconButton
@@ -198,7 +217,7 @@ export default function PrimarySearchAppBar() {
                             color="inherit"
                         >
                             <Badge badgeContent={17} color="error">
-                                <NotificationsIcon />
+                                <ShoppingCartOutlinedIcon />
                             </Badge>
                         </IconButton>
                         <IconButton
@@ -229,6 +248,6 @@ export default function PrimarySearchAppBar() {
             </AppBar>
             {renderMobileMenu}
             {renderMenu}
-        </Box>
+        </Box >
     );
 }

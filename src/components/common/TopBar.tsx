@@ -3,28 +3,18 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 
 export default function TopBar() {
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
-                <Toolbar>
-                    <IconButton
-                        size="large"
-                        edge="start"
-                        color="inherit"
-                        aria-label="menu"
-                        sx={{ mr: 2 }}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        News
+            <AppBar position="static" color="transparent" className='top-bar'>
+                <Toolbar variant="dense">
+                    <Typography sx={{ flexGrow: 1, fontSize: 14 }}>
+                        <a href="tel:004812345678">+48 123 45 678</a> | <a href="mailto:support@ecommerce.com">support@ecommerce.com</a>
                     </Typography>
-                    <Button color="inherit">Login</Button>
+                    <Typography sx={{ flexGrow: 1, fontSize: 14 }}>
+                        Amazing eCommerce platform for every business | EGlobal Commerce Company
+                    </Typography>
                 </Toolbar>
             </AppBar>
         </Box>
