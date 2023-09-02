@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { createContext } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -16,8 +15,8 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import MoreIcon from '@mui/icons-material/MoreVert';
-
-export const QueryContext = createContext('drive');
+// import { filterContext } from '../../model/filterContext';
+// import { useContext } from 'react';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -35,16 +34,6 @@ const Search = styled('div')(({ theme }) => ({
     },
 }));
 
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-}));
-
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
     color: 'inherit',
     '& .MuiInputBase-input': {
@@ -59,11 +48,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-export default function PrimarySearchAppBar() {
+export default function PrimarySearchAppBar({ setQuery }) {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
         React.useState<null | HTMLElement>(null);
-    const [searchQuery, setSearchQuery] = React.useState<string>('');
+    const [input, setInput] = React.useState<string>('');
 
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -71,6 +60,7 @@ export default function PrimarySearchAppBar() {
     const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
     };
+    const [searchQuery, setSearchQuery] = React.useState<null | HTMLElement>(null);;
 
     const handleMobileMenuClose = () => {
         setMobileMoreAnchorEl(null);
@@ -87,15 +77,8 @@ export default function PrimarySearchAppBar() {
 
     const handleChange = (event) => {
         console.log('onChange', event.target.value)
-        setSearchQuery(event.target.value);
-    };
-
-    const handleKeyDown = (event) => {
-        // confirm query and fetch products
-    };
-
-    const handleClick = (event) => {
-        // confirm query and fetch products
+        setInput(event.target.value);
+        setQuery(event.target.value);
     };
 
     const menuId = 'primary-search-account-menu';
@@ -192,17 +175,17 @@ export default function PrimarySearchAppBar() {
                         component="div"
                         sx={{ display: { xs: 'none', sm: 'block' } }}
                     >
-                        <img src="/logo.svg" alt="Ecommerce logo" height={40} /> <Typography sx={{ fontWeight: 700, fontSize: 20, display: 'inline-block' }}>G-Commerce</Typography>
+                        <img src="/logo.svg" alt="Ecommerce logo" height={40} /> <Typography sx={{ fontWeight: 700, fontSize: 20, display: 'inline-block' }}>Global Commerce</Typography>
                     </Typography>
                     <Search className='search-query'>
+                        <SearchIcon />
                         <StyledInputBase
                             className="search-query__input"
                             placeholder="Search a product…"
                             inputProps={{ 'aria-label': 'search' }}
                             onChange={handleChange}
-                            value={searchQuery}
+                            value={input}
                         />
-                        <SearchIcon onClick={handleClick} className="search-query__btn" />
                     </Search>
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>

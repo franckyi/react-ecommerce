@@ -13,7 +13,7 @@ export default function TopBar() {
                         <a href="tel:004812345678">+48 123 45 678</a> | <a href="mailto:support@ecommerce.com">support@ecommerce.com</a>
                     </Typography>
                     <Typography sx={{ flexGrow: 1, fontSize: 14 }}>
-                        Amazing eCommerce platform for every business | EGlobal Commerce Company
+                        Amazing eCommerce platform for every business
                     </Typography>
                 </Toolbar>
             </AppBar>
