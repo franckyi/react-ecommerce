@@ -30,6 +30,9 @@ body {
   flex-direction: column;
   justify-content: space-between;
 }
+.product-list__upper-part-modal {
+  cursor: zoom-in;
+}
 .product-list img {
   object-fit: contain;
 }
@@ -43,6 +46,13 @@ body {
 .product-list__item--price {
   font-size: 20px;
   font-weight: 800;
+}
+
+.modal-box {
+  display: flex;
+}
+.modal-box .col {
+  width: 50%;
 }
 
 .search-query {

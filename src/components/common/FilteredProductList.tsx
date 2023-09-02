@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { FiltersContext } from "../../model/filterContext";
-import ProductCard from "./ProductCard";
+import ProductCard from './ProductCard';
 
 export default function FilteredProductList({ products }) {
     const { filters, setFilters } = useContext(FiltersContext);
@@ -8,7 +8,6 @@ export default function FilteredProductList({ products }) {
     if (filters.query.length > 0 || filters.category !== 'All') {
         return (
             <>
-                <h4>current query: {filters.query}</h4>
                 <h2>Search results</h2>
                 <section products={products} className="product-list" >
                     {products && products.filter(item => filters.category.toUpperCase() === item.category.toUpperCase())
@@ -26,7 +25,6 @@ export default function FilteredProductList({ products }) {
     else if (filters.query.length > 0 || filters.category === 'All') {
         return (
             <>
-                <h4>current query: {filters.query}</h4>
                 <h2>Search results</h2>
                 <section products={products} className="product-list" >
                     {products && products.filter(item =>

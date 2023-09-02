@@ -1,4 +1,4 @@
-import ControlledAccordions from '../ControlledAccordions'
+import ControlledAccordions from './ControlledAccordions'
 
 export default function Faq() {
     return (

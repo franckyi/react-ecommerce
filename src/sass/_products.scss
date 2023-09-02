@@ -13,6 +13,10 @@
         justify-content: space-between;
     }
 
+    &__upper-part-modal {
+        cursor: zoom-in;
+    }
+
     img {
         object-fit: contain;
     }
@@ -30,5 +34,13 @@
     &__item--price {
         font-size: 20px;
         font-weight: 800;
+    }
+}
+
+.modal-box {
+    display: flex;
+
+    .col {
+        width: 50%;
     }
 }
