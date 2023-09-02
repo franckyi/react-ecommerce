@@ -9,9 +9,9 @@ export default function BasicButtonGroup() {
 
     return (
         <ButtonGroup variant="outline" aria-label="outlined primary button group">
-            <Button onClick={() => setCounter(counter - 1)}>-</Button>
+            <Button disabled={counter < 2} onClick={() => setCounter(counter - 1)}>-</Button>
             <span>{counter}</span>
             <Button onClick={() => setCounter(counter + 1)}>+</Button>
         </ButtonGroup>
-    );
+    )
 }

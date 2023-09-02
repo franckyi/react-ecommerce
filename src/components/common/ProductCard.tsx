@@ -68,6 +68,12 @@ export default function ProductCard(props) {
             <Typography id="modal-modal-description" sx={{ mt: 2, fontSize: 14 }}>
               {props.item.description}
             </Typography>
+            <div className="d-flex">
+              <BasicButtonGroup />
+              <Typography gutterBottom variant="span" component="div" className='product-list__item--price'>
+                $ {props.item.price}
+              </Typography>
+            </div>
             <Button size="small" color="primary" variant="contained">Add to cart</Button>
             <img
               src="payments.png"
@@ -91,7 +97,7 @@ export default function ProductCard(props) {
             <Typography gutterBottom variant="span" component="div" className='product-list__item--title'>
               {props.item.title}
             </Typography>
-            <div className='product-list__rating-price'>
+            <div className='d-flex'>
               <Rating
                 name="simple-controlled"
                 value={props.item.rating.rate}

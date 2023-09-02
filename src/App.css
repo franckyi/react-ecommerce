@@ -82,4 +82,9 @@ body {
   padding-left: 8px;
 }
 
+.d-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
 /*# sourceMappingURL=App.css.map */

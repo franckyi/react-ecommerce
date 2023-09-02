@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
 export const OrderContext = createContext({
-    count: 0,
+    counter: 0,
     price: 0,
 });
