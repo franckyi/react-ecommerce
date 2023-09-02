@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import Rating from '@mui/material/Rating';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
+import BasicButtonGroup from './ButtonGroup';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -37,31 +38,43 @@ export default function ProductCard(props) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style} className='modal-box'>
+        <Box sx={style} className="modal-box">
           <div className="col">
-            <Typography id="modal-modal-title" sx={{ fontSize: 18, fontWeight: 800 }} component="h3">
+            <Typography id="modal-modal-title" sx={{ fontSize: 18, fontWeight: 800, maxWidth: '70%' }} component="h3">
               {props.item.title}
             </Typography>
             <img
+              className="product-img"
               src={props.item.image}
               alt={props.item.title}
-              width="360"
+              height="350"
+              draggable="false"
             />
           </div>
           <div className="col">
-            <Rating
-              name="simple-controlled"
-              value={props.item.rating.rate}
-              size="small"
-              precision={0.5}
-              onChange={(event, newValue) => {
-                setValue(newValue);
-              }}
-            />
+            <div className="rating">
+              <Rating
+                name="simple-controlled"
+                value={props.item.rating.rate}
+                size="small"
+                precision={0.5}
+                onChange={(event, newValue) => {
+                  setValue(newValue);
+                }}
+              />
+              <span>voted by {props.item.rating.count} users</span>
+            </div>
+            <p>Categories / <span className="label">{props.item.category}</span></p>
             <Typography id="modal-modal-description" sx={{ mt: 2, fontSize: 14 }}>
               {props.item.description}
             </Typography>
             <Button size="small" color="primary" variant="contained">Add to cart</Button>
+            <img
+              src="payments.png"
+              alt="Our payment methods"
+              width="300"
+              draggable="false"
+            />
           </div>
         </Box>
       </Modal>
@@ -78,21 +91,24 @@ export default function ProductCard(props) {
             <Typography gutterBottom variant="span" component="div" className='product-list__item--title'>
               {props.item.title}
             </Typography>
-            <Rating
-              name="simple-controlled"
-              value={props.item.rating.rate}
-              size="small"
-              precision={0.5}
-              onChange={(event, newValue) => {
-                setValue(newValue);
-              }}
-            />
+            <div className='product-list__rating-price'>
+              <Rating
+                name="simple-controlled"
+                value={props.item.rating.rate}
+                size="small"
+                precision={0.5}
+                onChange={(event, newValue) => {
+                  setValue(newValue);
+                }}
+              />
+              <Typography gutterBottom variant="span" component="div" className='product-list__item--price'>
+                $ {props.item.price}
+              </Typography>
+            </div>
           </CardContent>
         </div>
         <CardActions className='product-list__item--cta'>
-          <Typography gutterBottom variant="span" component="div" className='product-list__item--price'>
-            $ {props.item.price}
-          </Typography>
+          <BasicButtonGroup />
           <Button size="small" color="primary" variant="outlined">Add to cart</Button>
         </CardActions>
       </Card>
