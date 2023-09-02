@@ -1,7 +1,6 @@
 import ProductCard from "./ProductCard";
 
-export default function ProductList({ products, minRating, query }) {
-
+export default function ProductList({ products, minRating }) {
     return (
         <>
             <section products={products} className="product-list">

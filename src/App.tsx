@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import { Product } from './types/product';
 import API from './api/api-variables';
 import { useContext } from 'react';
-import { QueryContext } from './model/filterContext'
+import { FiltersContext } from './model/filterContext'
 import Header from './components/common/Header';
 
 function App() {
-  const [query, setQuery] = useState(useContext(QueryContext));
+  const [filters, setFilters] = useState(useContext(FiltersContext));
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
@@ -18,13 +18,14 @@ function App() {
         console.log(json);
         setProducts(json)
       })
-  }, [])
+  }, [filters])
 
   return (
-    <QueryContext.Provider value={query}>
-      <Header setQuery={setQuery} />
-      <Home products={products} query={query} setQuery={setQuery} />
-    </QueryContext.Provider>
+    <FiltersContext.Provider value={{ filters, setFilters }}>
+      <Header />
+      <h5>{JSON.stringify(filters)}</h5>
+      <Home products={products} filters={filters} />
+    </FiltersContext.Provider>
   )
 }
 

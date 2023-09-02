@@ -1,10 +1,21 @@
 import * as React from 'react';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
+import { FiltersContext } from '../../model/filterContext';
+
+const ALL = `electronics jewelery men's clothing women's clothing`;
 
 export default function CategoriesChip() {
-    const handleClick = () => {
+    const { filters, setFilters } = React.useContext(FiltersContext);
+
+    const handleClick = (e) => {
         console.info('You clicked the Chip.');
+        console.info('event innerHTML:', e.target.innerHTML);
+        console.info('event:', e);
+        setFilters({
+            ...filters,
+            category: e.target.innerHTML
+        })
     };
 
     return (

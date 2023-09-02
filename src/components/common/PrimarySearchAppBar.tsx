@@ -15,8 +15,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import MoreIcon from '@mui/icons-material/MoreVert';
-// import { filterContext } from '../../model/filterContext';
-// import { useContext } from 'react';
+import { FiltersContext } from '../../model/filterContext';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -48,7 +47,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-export default function PrimarySearchAppBar({ setQuery }) {
+export default function PrimarySearchAppBar() {
+    const { filters, setFilters } = React.useContext(FiltersContext);
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
         React.useState<null | HTMLElement>(null);
@@ -60,7 +60,6 @@ export default function PrimarySearchAppBar({ setQuery }) {
     const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
     };
-    const [searchQuery, setSearchQuery] = React.useState<null | HTMLElement>(null);;
 
     const handleMobileMenuClose = () => {
         setMobileMoreAnchorEl(null);
@@ -78,7 +77,10 @@ export default function PrimarySearchAppBar({ setQuery }) {
     const handleChange = (event) => {
         console.log('onChange', event.target.value)
         setInput(event.target.value);
-        setQuery(event.target.value);
+        setFilters({
+            ...filters,
+            query: event.target.value
+        });
     };
 
     const menuId = 'primary-search-account-menu';
@@ -181,7 +183,7 @@ export default function PrimarySearchAppBar({ setQuery }) {
                         <SearchIcon />
                         <StyledInputBase
                             className="search-query__input"
-                            placeholder="Search a product…"
+                            placeholder="Search product or descriptions…"
                             inputProps={{ 'aria-label': 'search' }}
                             onChange={handleChange}
                             value={input}
