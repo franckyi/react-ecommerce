@@ -1,10 +1,10 @@
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
-import { useState } from 'react';
+// import { useState } from 'react';
 // import { useContext } from 'react';
 
-export default function BasicButtonGroup() {
-    const [counter, setCounter] = useState(1);
+export default function BasicButtonGroup({ counter, setCounter }) {
+
     // const { order, setOrder } = useContext(OrderContext);
 
     return (

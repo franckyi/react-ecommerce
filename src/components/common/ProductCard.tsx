@@ -24,6 +24,7 @@ const style = {
 
 export default function ProductCard(props) {
   const [value, setValue] = React.useState<number | null>(2);
+  const [counter, setCounter] = React.useState(1);
 
   // MODAL
   const [open, setOpen] = React.useState(false);
@@ -69,7 +70,7 @@ export default function ProductCard(props) {
               {props.item.description}
             </Typography>
             <div className="d-flex">
-              <BasicButtonGroup />
+              <BasicButtonGroup counter={counter} setCounter={setCounter} />
               <Typography gutterBottom variant="span" component="div" className='product-list__item--price'>
                 $ {props.item.price}
               </Typography>
@@ -108,13 +109,13 @@ export default function ProductCard(props) {
                 }}
               />
               <Typography gutterBottom variant="span" component="div" className='product-list__item--price'>
-                $ {props.item.price}
+                $ {(props.item.price * counter).toFixed(2)}
               </Typography>
             </div>
           </CardContent>
         </div>
         <CardActions className='product-list__item--cta'>
-          <BasicButtonGroup />
+          <BasicButtonGroup counter={counter} setCounter={setCounter} />
           <Button size="small" color="primary" variant="outlined">Add to cart</Button>
         </CardActions>
       </Card>
