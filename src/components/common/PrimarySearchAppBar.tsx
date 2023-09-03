@@ -162,23 +162,7 @@ export default function PrimarySearchAppBar() {
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static" color="primary">
                 <Toolbar>
-                    <IconButton
-                        size="large"
-                        edge="start"
-                        color="inherit"
-                        aria-label="open drawer"
-                        sx={{ mr: 2 }}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="div"
-                        sx={{ display: { xs: 'none', sm: 'block' } }}
-                    >
-                        <img src="/logo.svg" alt="Ecommerce logo" height={40} /> <Typography sx={{ fontWeight: 700, fontSize: 20, display: 'inline-block' }}>Global Commerce</Typography>
-                    </Typography>
+                    <img src="/logo.svg" alt="Ecommerce logo" height={40} /> <Typography sx={{ fontWeight: 700, fontSize: 20, display: 'inline-block' }}>Global Commerce</Typography>
                     <Search className='search-query'>
                         <SearchIcon />
                         <StyledInputBase

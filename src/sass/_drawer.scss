@@ -1,3 +1,7 @@
 .drawer {
-    height: 200;
+    .MuiPaper-root {
+        height: 350px;
+        justify-content: center;
+        gap: 3rem;
+    }
 }

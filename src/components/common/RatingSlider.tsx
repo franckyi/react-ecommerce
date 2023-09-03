@@ -32,7 +32,7 @@ export default function RatingSlider() {
     };
 
     return (
-        <Box sx={{ width: 300, height: 200, display: 'flex', gap: '15px' }}>
+        <Box sx={{ width: 320, display: 'flex', gap: '15px' }}>
             <span>Rating: </span>
             <Slider
                 aria-label="Always visible"

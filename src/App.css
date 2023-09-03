@@ -98,8 +98,10 @@ body {
   justify-content: space-between;
 }
 
-.drawer {
-  height: 200;
+.drawer .MuiPaper-root {
+  height: 350px;
+  justify-content: center;
+  gap: 3rem;
 }
 
 /*# sourceMappingURL=App.css.map */

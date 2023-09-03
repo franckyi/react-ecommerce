@@ -35,7 +35,7 @@ export default function PriceSlider() {
     };
 
     return (
-        <Box sx={{ width: 300, height: 200, display: 'flex', gap: '15px' }}>
+        <Box sx={{ width: 300, display: 'flex', gap: '15px' }}>
             <span>Price: </span>
             <Slider
                 aria-label="Always visible"
