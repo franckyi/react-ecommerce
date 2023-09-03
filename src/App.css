@@ -66,8 +66,15 @@ body {
   object-fit: contain;
   max-width: 90%;
 }
+.modal-box .rating {
+  display: flex;
+  align-items: center;
+}
 .modal-box .rating:nth-child(1) {
   margin-right: 10px;
+}
+.modal-box .rating + p {
+  margin: 0;
 }
 .modal-box .label {
   text-transform: capitalize;
@@ -77,14 +84,22 @@ body {
 
 .search-query {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
+  min-width: 35%;
   align-items: center;
   padding-left: 8px;
+}
+.search-query input {
+  padding-left: 8px !important;
 }
 
 .d-flex {
   display: flex;
   justify-content: space-between;
+}
+
+.drawer {
+  height: 200;
 }
 
 /*# sourceMappingURL=App.css.map */

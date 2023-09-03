@@ -59,8 +59,15 @@
     }
 
     .rating {
+        display: flex;
+        align-items: center;
+
         &:nth-child(1) {
             margin-right: 10px;
+        }
+
+        &+p {
+            margin: 0;
         }
     }
 

@@ -63,16 +63,18 @@ export default function ProductCard(props) {
                   setValue(newValue);
                 }}
               />
-              <span>voted by {props.item.rating.count} users</span>
+              <Typography id="modal-modal-rating" sx={{ fontSize: 12, display: 'inline', ml: 2 }}>
+                voted by {props.item.rating.count} users
+              </Typography>
             </div>
             <p>Categories / <span className="label">{props.item.category}</span></p>
-            <Typography id="modal-modal-description" sx={{ mt: 2, fontSize: 14 }}>
+            <Typography id="modal-modal-description" sx={{ fontSize: 14 }}>
               {props.item.description}
             </Typography>
             <div className="d-flex">
               <BasicButtonGroup counter={counter} setCounter={setCounter} />
               <Typography gutterBottom variant="span" component="div" className='product-list__item--price'>
-                $ {props.item.price}
+                $ {(props.item.price * counter).toFixed(2)}
               </Typography>
             </div>
             <Button size="small" color="primary" variant="contained">Add to cart</Button>

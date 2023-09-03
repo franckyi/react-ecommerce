@@ -124,8 +124,8 @@ export default function PrimarySearchAppBar() {
             onClose={handleMobileMenuClose}
         >
             <MenuItem>
-                <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                    <Badge badgeContent={4} color="error">
+                <IconButton size="large" aria-label="show your favorite products" color="inherit">
+                    <Badge badgeContent={0} color="error">
                         <FavoriteBorderOutlinedIcon />
                     </Badge>
                 </IconButton>
@@ -134,7 +134,7 @@ export default function PrimarySearchAppBar() {
             <MenuItem>
                 <IconButton
                     size="large"
-                    aria-label="show 17 new notifications"
+                    aria-label="show cart"
                     color="inherit"
                 >
                     <Badge badgeContent={17} color="error">
