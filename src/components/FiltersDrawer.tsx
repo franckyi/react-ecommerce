@@ -3,6 +3,8 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Button from '@mui/material/Button';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import PriceSlider from './common/PriceSlider';
+import CategoriesChip from './common/CategoriesChip';
+import RatingSlider from './common/RatingSlider';
 
 type Anchor = 'Filter products';
 
@@ -39,6 +41,8 @@ export default function FiltersDrawer() {
                         className='drawer'
                     >
                         <PriceSlider />
+                        <RatingSlider />
+                        <CategoriesChip />
                     </SwipeableDrawer>
                 </React.Fragment>
             ))}
