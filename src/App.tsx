@@ -5,12 +5,13 @@ import { Product } from './types/product';
 import API from './api/api-variables';
 import { FiltersContext, initialState } from './model/filterContext'
 import Header from './components/common/Header';
-import { OrderContext } from './model/orderContext';
+import { CartContext } from './model/cartContext';
 
 function App() {
   const [filters, setFilters] = useState(useContext(FiltersContext));
   const [products, setProducts] = useState<Product[]>([]);
-  // const [initialFiltersState, setInitialFiltersState] = useState(initialState);
+  const [loading, setLoading] = useState(true);
+  const [cart, setCart] = useState(useContext(CartContext));
 
   const handleResetFilters = () => {
     setFilters(initialState)
@@ -22,16 +23,18 @@ function App() {
       .then(json => {
         console.log(json);
         setProducts(json)
-      })
+        setLoading(false)
+      });
   }, [filters])
 
   return (
     <FiltersContext.Provider value={{ filters, setFilters }}>
-      <Header />
-      <h5>{JSON.stringify(filters)}</h5>
-      {/* <OrderContext.Provider value={{ order, setOrder }}> */}
-      <Home products={products} handleResetFilters={handleResetFilters} />
-      {/* </OrderContext.Provider> */}
+      <CartContext.Provider value={{ cart, setCart }}>
+        <Header />
+        <h5>{JSON.stringify(filters)}</h5>
+        <h5>{JSON.stringify(cart)}</h5>
+        <Home products={products} handleResetFilters={handleResetFilters} loading={loading} setLoading={setLoading} />
+      </CartContext.Provider>
     </FiltersContext.Provider>
   )
 }

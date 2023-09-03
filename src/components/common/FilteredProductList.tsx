@@ -1,14 +1,16 @@
 import { useContext } from "react";
 import { FiltersContext, initialState } from "../../model/filterContext";
-import ProductCard from './ProductCard';
+import ProductCard from "./ProductCard";
 import { Button } from "@mui/material";
+import Spinner from "./Spinner";
 
-export default function FilteredProductList({ products, handleResetFilters }) {
+export default function FilteredProductList({ products, handleResetFilters, loading, setLoading }) {
     const { filters, setFilters } = useContext(FiltersContext);
 
     if (filters.query.length > 0 || filters.category !== 'All') {
         return (
             <>
+                {loading && <Spinner />}
                 <h2>Founded basing on your current search filters</h2>
                 <span>Searching in <span style={{ fontWeight: 700 }}>{filters.category}</span> | Price from $ {filters.price.min} to $ {filters.price.max} | ☆ {filters.rating.min} to {filters.rating.max} <Button onClick={handleResetFilters} sx={{ textTransform: 'capitalize' }}>Reset filters</Button></span>
                 <section products={products} className="product-list" >
@@ -29,6 +31,7 @@ export default function FilteredProductList({ products, handleResetFilters }) {
     else if (filters.query.length > 0 || filters.category === 'All') {
         return (
             <>
+                {loading && <Spinner />}
                 <h2>Catalogue</h2>
                 <span>Price from $ {filters.price.min} to $ {filters.price.max} | ☆ {filters.rating.min} to {filters.rating.max} <Button onClick={handleResetFilters} sx={{ textTransform: 'capitalize' }}>Reset filters</Button></span>
                 <section products={products} className="product-list" >

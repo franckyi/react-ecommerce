@@ -9,6 +9,7 @@ import Rating from '@mui/material/Rating';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import BasicButtonGroup from './ButtonGroup';
+import { CartContext } from '../../model/cartContext';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -25,11 +26,21 @@ const style = {
 export default function ProductCard(props) {
   const [value, setValue] = React.useState<number | null>(2);
   const [counter, setCounter] = React.useState(1);
+  const { cart, setCart } = React.useContext(CartContext);
 
   // MODAL
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const handleAddToCart = () => {
+    console.log('cart:', cart)
+    setCart({
+      ...cart,
+      products: cart.products.push(props.item),
+      counter: cart.counter += 1
+    })
+  }
 
   return (
     <>
@@ -118,7 +129,7 @@ export default function ProductCard(props) {
         </div>
         <CardActions className='product-list__item--cta'>
           <BasicButtonGroup counter={counter} setCounter={setCounter} />
-          <Button size="small" color="primary" variant="outlined">Add to cart</Button>
+          <Button onClick={handleAddToCart} size="small" color="primary" variant="outlined">Add to cart</Button>
         </CardActions>
       </Card>
     </>
