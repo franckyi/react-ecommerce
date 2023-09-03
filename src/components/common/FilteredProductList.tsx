@@ -3,17 +3,13 @@ import { FiltersContext, initialState } from "../../model/filterContext";
 import ProductCard from './ProductCard';
 import { Button } from "@mui/material";
 
-export default function FilteredProductList({ products }) {
+export default function FilteredProductList({ products, handleResetFilters }) {
     const { filters, setFilters } = useContext(FiltersContext);
-
-    const handleResetFilters = () => {
-        setFilters(initialState)
-    }
 
     if (filters.query.length > 0 || filters.category !== 'All') {
         return (
             <>
-                <h2>Products found basing on your current search filters</h2>
+                <h2>Founded basing on your current search filters</h2>
                 <span>Searching in <span style={{ fontWeight: 700 }}>{filters.category}</span> | Price from $ {filters.price.min} to $ {filters.price.max} | ☆ {filters.rating.min} to {filters.rating.max} <Button onClick={handleResetFilters} sx={{ textTransform: 'capitalize' }}>Reset filters</Button></span>
                 <section products={products} className="product-list" >
                     {products && products.filter(item => filters.category.toUpperCase() === item.category.toUpperCase())

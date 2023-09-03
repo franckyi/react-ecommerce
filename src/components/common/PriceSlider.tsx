@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
-import { FiltersContext } from '../../model/filterContext';
+import { FiltersContext, initialState } from '../../model/filterContext';
 
 const marks = [
     {
@@ -9,12 +9,12 @@ const marks = [
         label: '$1',
     },
     {
-        value: 2500,
-        label: '$2.500',
+        value: 500,
+        label: '$500',
     },
     {
-        value: 5000,
-        label: '$10.000',
+        value: 2000,
+        label: '$2.000',
     }
 ];
 
@@ -23,12 +23,8 @@ function valuetext(value: number) {
 }
 
 export default function PriceSlider() {
-    const [value, setValue] = React.useState<number[]>([1, 5000]);
     const { filters, setFilters } = React.useContext(FiltersContext);
-
     const handleChange = (event: Event, newValue: number | number[]) => {
-        console.log('changed price range:', newValue)
-        setValue(newValue as number[]);
         setFilters({
             ...filters,
             price: {
@@ -47,10 +43,10 @@ export default function PriceSlider() {
                 step={10}
                 marks={marks}
                 valueLabelDisplay="on"
-                value={value}
+                value={[filters.price.min, filters.price.max]}
                 onChange={handleChange}
                 min={1}
-                max={5000}
+                max={2000}
             />
         </Box>
     );

@@ -19,12 +19,9 @@ function valuetext(value: number) {
 }
 
 export default function RatingSlider() {
-    const [value, setValue] = React.useState<number[]>([0, 5]);
     const { filters, setFilters } = React.useContext(FiltersContext);
-
     const handleChange = (event: Event, newValue: number | number[]) => {
         console.log('changed price range:', newValue)
-        setValue(newValue as number[]);
         setFilters({
             ...filters,
             rating: {
@@ -43,7 +40,7 @@ export default function RatingSlider() {
                 step={.5}
                 marks={marks}
                 valueLabelDisplay="on"
-                value={value}
+                value={[filters.rating.min, filters.rating.max]}
                 onChange={handleChange}
                 min={0}
                 max={5}
