@@ -15,8 +15,7 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { FiltersContext } from '../context/filterContext';
-import CartPreview from './CartPreview';
-// import { CartContext } from '../../model/cartContext';
+import Cart from './Cart';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -177,7 +176,7 @@ export default function PrimarySearchAppBar({ products }) {
                     </Search>
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                        <CartPreview products={products} />
+                        <Cart products={products} />
                         <IconButton
                             size="large"
                             edge="end"

@@ -26,38 +26,13 @@ const style = {
 
 export default function ProductCard(props) {
   const [value, setValue] = React.useState<number | null>(2);
-  // const [counter, setCounter] = React.useState(1);
-  // const { cart, setCart } = React.useContext(CartContext);
-  // const [newItem, setNewItem] = React.useState(null);
-
-  const { cartItems, getItemQuantity, incrementItemQuantity, decrementItemQuantity, removeFromCart } = useCart();
-
+  const { cartItems, getItemQuantity, incrementItemQuantity } = useCart();
   const quantity = getItemQuantity(props.item.id);
 
   // MODAL
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  // const handleAddItem = () => {
-  //   console.log('handleAddItem()')
-  //   console.log('counter:', counter)
-  //   console.log('cart:', cart)
-  // let newItem = cart.products.slice().concat(props.item);
-  // console.log('newItem:', newItem)
-
-  // IDENTIFY AND SET NEW ITEM
-  // setNewItem(props.item)
-
-  // THEN CONCAT THAT ITEM TO CURRENT ARRAY
-
-  // LASTLY SET THAT ARRAY AS PRODUCTS IN SETCART
-
-  // setCart({
-  //   ...cart,
-  //   products: ,
-  // })
-  // }
 
   return (
     <>
@@ -146,7 +121,6 @@ export default function ProductCard(props) {
           </CardContent>
         </div>
         <CardActions className='product-list__item--cta'>
-          {/* <BasicButtonGroup currentProduct={props.item} counter={counter} setCounter={setCounter} /> */}
           <BasicButtonGroup currentProduct={props.item} />
           <Button onClick={() => incrementItemQuantity(props.item.id)} size="small" color="primary" variant="outlined">Add to cart</Button>
         </CardActions>

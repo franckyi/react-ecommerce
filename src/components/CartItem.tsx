@@ -1,9 +1,8 @@
 import { Button, ListItem, ListItemText } from "@mui/material";
-import { Product } from "../types/product";
 import { useCart } from "../context/cartContext";
 
 export function CartItem({ products, currentItem }) {
-    const { getItemQuantity, incrementItemQuantity, decrementItemQuantity, removeFromCart } = useCart();
+    const { decrementItemQuantity } = useCart();
     const item = products.find(item => item.id === currentItem.id);
     if (item == null) return null;
 

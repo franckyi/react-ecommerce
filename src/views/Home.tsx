@@ -4,12 +4,9 @@ import FilteredProductList from '../components/FilteredProductList';
 import CategoriesChip from '../components/ui/CategoriesChip';
 import FiltersDrawer from '../components/FiltersDrawer';
 import Header from '../components/ui/Header';
-// import { CartContext, cartInitialState } from '../context/cartContext';
-// import { useState } from 'react';
 import { useCart } from '../context/cartContext';
 
 export default function Home({ filters, products, loading, setLoading, handleResetFilters }) {
-    // const [cart, setCart] = useState(cartInitialState);
 
     return (
         <main>

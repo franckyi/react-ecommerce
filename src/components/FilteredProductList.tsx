@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { FiltersContext, filterInitialState } from "../context/filterContext";
+import { FiltersContext } from "../context/filterContext";
 import ProductCard from "./ui/ProductCard";
 import { Button } from "@mui/material";
 import Spinner from "./ui/Spinner";
