@@ -1,8 +1,8 @@
-import { Button, ListItem, ListItemText } from "@mui/material";
+import { Button, ListItem, ListItemText, Typography } from "@mui/material";
 import { useCart } from "../context/cartContext";
 
 export function CartItem({ allProducts, currentItem }) {
-    const { decrementItemQuantity } = useCart();
+    const { getItemQuantity, incrementItemQuantity, decrementItemQuantity } = useCart();
     const item = allProducts.find(item => item.id === currentItem.id);
     if (item == null) return null;
 
@@ -15,8 +15,9 @@ export function CartItem({ allProducts, currentItem }) {
                 width="30"
                 draggable="false"
             />
-            <ListItemText primary={item.title} />
-            <Button onClick={() => decrementItemQuantity(item.id)} variant="contained" color="error">-</Button>
+            <Typography sx={{ fontSize: 14, marginLeft: '10px', marginRight: '15px' }}>{item.title.substring(0, 25)} ({getItemQuantity(item.id)})</Typography>
+            <Button onClick={() => decrementItemQuantity(item.id)} sx={{ fontSize: 12, padding: 0, width: '10px' }} variant="outlined" color="primary">-</Button>
+            <Button onClick={() => incrementItemQuantity(item.id)} sx={{ fontSize: 12, padding: 0, width: '10px', marginLeft: '5px' }} variant="outlined" color="primary">+</Button>
         </ListItem>
     )
 }
