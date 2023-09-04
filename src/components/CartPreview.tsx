@@ -7,32 +7,21 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import { Badge, Button, IconButton } from '@mui/material';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import { CartContext } from '../context/cartContext';
+import { useCart } from '../context/cartContext';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { CartItem } from './cartItem';
 
-export default function CartPreview() {
+export default function CartPreview({ products }) {
     const [state, setState] = React.useState({
         top: false,
         left: false,
         bottom: false,
         right: false,
     });
-
-    const { cart, setCart } = React.useContext(CartContext);
-
-    const handleAddItem = () => {
-        console.log('handleAddItem()')
-        console.log('counter:', counter)
-        console.log('cart:', cart)
-        setCart({
-            ...cart,
-            products: cart.products.slice().push(props.item),
-        })
-    }
-
-    const handleRemoveItem = () => {
-        console.log('handleRemoveItem()')
-    }
+    const { cartItems } = useCart();
+    const { getItemQuantity, incrementItemQuantity, decrementItemQuantity, removeFromCart } = useCart();
+    // TODO: FIX ID
+    // const quantity = getItemQuantity(id);
 
     const toggleDrawer =
         (anchor: Anchor, open: boolean) =>
@@ -55,19 +44,9 @@ export default function CartPreview() {
             onKeyDown={toggleDrawer(anchor, false)}
         >
             <List>
-                {cart.products.map(item => (
-                    <ListItem key={item.id} disablePadding>
-                        <img
-                            className="product-thumb"
-                            src={item.image}
-                            alt={item.title}
-                            width="40"
-                            draggable="false"
-                        />
-                        <ListItemText primary={item.title} />
-                        <Button onClick={handleRemoveItem} variant="contained" color="error" startIcon={<DeleteIcon />}>Remove</Button>
-                    </ListItem>
-                ))}
+                {cartItems.map(item => {
+                    return <CartItem currentItem={item} products={products} />
+                })}
             </List>
             <Divider />
             <Button variant="contained" color="primary">Checkout</Button>
@@ -84,7 +63,7 @@ export default function CartPreview() {
                         aria-label="new notifications"
                         color="inherit"
                     >
-                        <Badge badgeContent={cart.counter > 0 ? cart.counter : '0'} color="error">
+                        <Badge badgeContent={cartItems.quantity > 0 ? cartItems.quantity : '0'} color="error">
                             <ShoppingCartOutlinedIcon />
                         </Badge>
                     </IconButton>

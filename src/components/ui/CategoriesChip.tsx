@@ -19,10 +19,10 @@ export default function CategoriesChip() {
     return (
         <Stack direction="row" spacing={1} className='categories-chip'>
             <Chip label="All" variant={filters.category === 'All' ? 'filled' : 'outlined'} onClick={handleClick} />
-            <Chip label="Electronics" variant={filters.category === 'Electronics' ? 'filled' : 'outlined'} onClick={handleClick} />
-            <Chip label="Jewelery" variant={filters.category === 'Jewelery' ? 'filled' : 'outlined'} onClick={handleClick} />
-            <Chip label="Men's clothing" variant={filters.category === `Men's clothing` ? 'filled' : 'outlined'} onClick={handleClick} />
-            <Chip label="Women's clothing" variant={filters.category === `Women's clothing` ? 'filled' : 'outlined'} onClick={handleClick} />
+            <Chip label="electronics" variant={filters.category === 'electronics' ? 'filled' : 'outlined'} onClick={handleClick} />
+            <Chip label="jewelery" variant={filters.category === 'jewelery' ? 'filled' : 'outlined'} onClick={handleClick} />
+            <Chip label="men's clothing" variant={filters.category === `men's clothing` ? 'filled' : 'outlined'} onClick={handleClick} />
+            <Chip label="women's clothing" variant={filters.category === `women's clothing` ? 'filled' : 'outlined'} onClick={handleClick} />
         </Stack>
     );
 }

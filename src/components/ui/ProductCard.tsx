@@ -9,7 +9,8 @@ import Rating from '@mui/material/Rating';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import BasicButtonGroup from './ButtonGroup';
-import { CartContext } from '../../context/cartContext';
+import { useCart } from '../../context/cartContext';
+// import { CartContext, useCart } from '../../context/cartContext';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -25,34 +26,38 @@ const style = {
 
 export default function ProductCard(props) {
   const [value, setValue] = React.useState<number | null>(2);
-  const [counter, setCounter] = React.useState(1);
-  const { cart, setCart } = React.useContext(CartContext);
-  const [newItem, setNewItem] = React.useState(null);
+  // const [counter, setCounter] = React.useState(1);
+  // const { cart, setCart } = React.useContext(CartContext);
+  // const [newItem, setNewItem] = React.useState(null);
+
+  const { cartItems, getItemQuantity, incrementItemQuantity, decrementItemQuantity, removeFromCart } = useCart();
+
+  const quantity = getItemQuantity(props.item.id);
 
   // MODAL
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const handleAddItem = () => {
-    console.log('handleAddItem()')
-    console.log('counter:', counter)
-    console.log('cart:', cart)
-    // let newItem = cart.products.slice().concat(props.item);
-    // console.log('newItem:', newItem)
+  // const handleAddItem = () => {
+  //   console.log('handleAddItem()')
+  //   console.log('counter:', counter)
+  //   console.log('cart:', cart)
+  // let newItem = cart.products.slice().concat(props.item);
+  // console.log('newItem:', newItem)
 
-    // IDENTIFY AND SET NEW ITEM
-    setNewItem(props.item)
+  // IDENTIFY AND SET NEW ITEM
+  // setNewItem(props.item)
 
-    // THEN CONCAT THAT ITEM TO CURRENT ARRAY
+  // THEN CONCAT THAT ITEM TO CURRENT ARRAY
 
-    // LASTLY SET THAT ARRAY AS PRODUCTS IN SETCART
+  // LASTLY SET THAT ARRAY AS PRODUCTS IN SETCART
 
-    // setCart({
-    //   ...cart,
-    //   products: ,
-    // })
-  }
+  // setCart({
+  //   ...cart,
+  //   products: ,
+  // })
+  // }
 
   return (
     <>
@@ -95,13 +100,13 @@ export default function ProductCard(props) {
               {props.item.description}
             </Typography>
             <div className="d-flex">
-              <BasicButtonGroup counter={counter} setCounter={setCounter} />
+              {/* <BasicButtonGroup counter={counter} setCounter={setCounter} /> */}
+              <BasicButtonGroup currentProduct={props.item} />
               <Typography gutterBottom variant="span" component="div" className='product-list__item--price'>
-                $ {(props.item.price * counter).toFixed(2)}
+                $ {(props.item.price * quantity).toFixed(2)}
               </Typography>
             </div>
-            // TODO
-            <Button size="small" color="primary" variant="contained">Add to cart</Button>
+            <Button onClick={() => incrementItemQuantity(props.item.id)} size="small" color="primary" variant="outlined">Add to cart</Button>
             <img
               src="payments.png"
               alt="Our payment methods"
@@ -135,14 +140,15 @@ export default function ProductCard(props) {
                 }}
               />
               <Typography gutterBottom variant="span" component="div" className='product-list__item--price'>
-                $ {(props.item.price * counter).toFixed(2)}
+                $ {quantity === 0 ? props.item.price.toFixed(2) : (props.item.price * quantity).toFixed(2)}
               </Typography>
             </div>
           </CardContent>
         </div>
         <CardActions className='product-list__item--cta'>
-          <BasicButtonGroup counter={counter} setCounter={setCounter} />
-          <Button onClick={handleAddItem} size="small" color="primary" variant="outlined">Add to cart</Button>
+          {/* <BasicButtonGroup currentProduct={props.item} counter={counter} setCounter={setCounter} /> */}
+          <BasicButtonGroup currentProduct={props.item} />
+          <Button onClick={() => incrementItemQuantity(props.item.id)} size="small" color="primary" variant="outlined">Add to cart</Button>
         </CardActions>
       </Card>
     </>

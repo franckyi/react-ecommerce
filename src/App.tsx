@@ -6,6 +6,7 @@ import { Product } from './types/product';
 import API from './api/api-variables';
 import About from './views/About';
 import { FiltersContext, filterInitialState } from './context/filterContext'
+import { CartContextProvider } from './context/cartContext';
 
 function App() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -30,12 +31,14 @@ function App() {
   }, [filters])
 
   return (
-    <FiltersContext.Provider value={{ filters, setFilters }}>
-      <Routes>
-        <Route path='/' element={<Home filters={filters} products={products} loading={loading} setLoading={setLoading} handleResetFilters={handleResetFilters} />} />
-        <Route path='/about' element={<About />} />
-      </Routes>
-    </FiltersContext.Provider>
+    <CartContextProvider>
+      <FiltersContext.Provider value={{ filters, setFilters }}>
+        <Routes>
+          <Route path='/' element={<Home filters={filters} products={products} loading={loading} setLoading={setLoading} handleResetFilters={handleResetFilters} />} />
+          <Route path='/about' element={<About />} />
+        </Routes>
+      </FiltersContext.Provider>
+    </CartContextProvider>
   )
 }
 
