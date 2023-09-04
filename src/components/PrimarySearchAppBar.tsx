@@ -164,10 +164,9 @@ export default function PrimarySearchAppBar({ products }) {
             <AppBar position="static" color="primary">
                 <Toolbar>
                     <img src="/logo.svg" alt="Ecommerce logo" height={40} /> <Typography sx={{ fontWeight: 700, fontSize: 20, display: 'inline-block' }}>Global Commerce</Typography>
-                    <Search className='search-query'>
+                    <Search className='search'>
                         <SearchIcon />
                         <StyledInputBase
-                            className="search-query__input"
                             placeholder="Search product or descriptions…"
                             inputProps={{ 'aria-label': 'search' }}
                             onChange={handleChange}

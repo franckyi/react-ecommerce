@@ -15,7 +15,7 @@ export default function Cart({ products }) {
         bottom: false,
         right: false,
     });
-    const { cartItems } = useCart();
+    const { cartItems, totalQuantity } = useCart();
 
     const toggleDrawer =
         (anchor: Anchor, open: boolean) =>
@@ -33,10 +33,11 @@ export default function Cart({ products }) {
 
     const list = (anchor: Anchor) => (
         <Box
+            sx={{ width: 400 }}
             role="presentation"
-            onClick={toggleDrawer(anchor, false)}
             onKeyDown={toggleDrawer(anchor, false)}
         >
+            <Button onClick={toggleDrawer(anchor, false)} variant="outlined" color="primary">Close</Button>
             <List>
                 {cartItems.map(item => {
                     return <CartItem currentItem={item} products={products} />
@@ -48,7 +49,7 @@ export default function Cart({ products }) {
     );
 
     return (
-        <div>
+        <div className="cart">
             {(['right'] as const).map((anchor) => (
                 <React.Fragment key={anchor}>
                     <IconButton
@@ -57,7 +58,7 @@ export default function Cart({ products }) {
                         aria-label="new notifications"
                         color="inherit"
                     >
-                        <Badge badgeContent={cartItems.quantity > 0 ? cartItems.quantity : '0'} color="error">
+                        <Badge badgeContent={totalQuantity > 0 ? totalQuantity : '0'} color="error">
                             <ShoppingCartOutlinedIcon />
                         </Badge>
                     </IconButton>
