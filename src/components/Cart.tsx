@@ -7,8 +7,14 @@ import { Badge, Button, IconButton } from '@mui/material';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { useCart } from '../context/cartContext';
 import { CartItem } from './CartItem';
+import { Product } from '../types/product';
 
-export default function Cart({ allProducts }) {
+type CartProps = {
+    allProducts: Product[]
+}
+
+export default function Cart(props: CartProps) {
+    const { allProducts } = props;
     const [state, setState] = React.useState({
         top: false,
         left: false,
@@ -33,18 +39,18 @@ export default function Cart({ allProducts }) {
 
     const list = (anchor: Anchor) => (
         <Box
-            sx={{ width: 400 }}
+            sx={{ width: 400, padding: '20px' }}
             role="presentation"
             onKeyDown={toggleDrawer(anchor, false)}
         >
-            <Button onClick={toggleDrawer(anchor, false)} variant="outlined" color="primary">Close</Button>
+            <Button onClick={toggleDrawer(anchor, false)} variant="outlined" color="primary" sx={{ marginBottom: '20px' }}>Close</Button>
             <List>
                 {cartItems.map(item => {
                     return <CartItem currentItem={item} allProducts={allProducts} />
                 })}
             </List>
-            <Divider />
-            <Button variant="contained" color="primary">Checkout</Button>
+            <Divider sx={{ margin: '40px 0' }} />
+            <Button variant="contained" color="primary" sx={{ marginTop: '20px' }}>Checkout</Button>
         </Box>
     );
 

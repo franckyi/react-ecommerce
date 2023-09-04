@@ -23,7 +23,6 @@ function App() {
     fetch(`${API.URL}/${API.PRODUCTS}`)
       .then(response => response.json())
       .then(json => {
-        console.log(json);
         setAllProducts(json)
       });
   }, [])
