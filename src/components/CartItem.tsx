@@ -1,9 +1,9 @@
 import { Button, ListItem, ListItemText } from "@mui/material";
 import { useCart } from "../context/cartContext";
 
-export function CartItem({ products, currentItem }) {
+export function CartItem({ allProducts, currentItem }) {
     const { decrementItemQuantity } = useCart();
-    const item = products.find(item => item.id === currentItem.id);
+    const item = allProducts.find(item => item.id === currentItem.id);
     if (item == null) return null;
 
     return (
@@ -12,7 +12,7 @@ export function CartItem({ products, currentItem }) {
                 className="product-thumb"
                 src={item.image}
                 alt={item.title}
-                width="40"
+                width="30"
                 draggable="false"
             />
             <ListItemText primary={item.title} />

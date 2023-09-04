@@ -6,11 +6,11 @@ import FiltersDrawer from '../components/FiltersDrawer';
 import Header from '../components/ui/Header';
 import { useCart } from '../context/cartContext';
 
-export default function Home({ filters, products, loading, setLoading, handleResetFilters }) {
+export default function Home({ filters, allProducts, products, loading, setLoading, handleResetFilters }) {
 
     return (
         <main>
-            <Header products={products} />
+            <Header allProducts={allProducts} />
             <section className="catalogue">
                 <h5>{JSON.stringify(filters)}</h5>
                 <h5>{JSON.stringify(useCart())}</h5>

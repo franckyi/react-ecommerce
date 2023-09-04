@@ -8,7 +8,7 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { useCart } from '../context/cartContext';
 import { CartItem } from './CartItem';
 
-export default function Cart({ products }) {
+export default function Cart({ allProducts }) {
     const [state, setState] = React.useState({
         top: false,
         left: false,
@@ -40,7 +40,7 @@ export default function Cart({ products }) {
             <Button onClick={toggleDrawer(anchor, false)} variant="outlined" color="primary">Close</Button>
             <List>
                 {cartItems.map(item => {
-                    return <CartItem currentItem={item} products={products} />
+                    return <CartItem currentItem={item} allProducts={allProducts} />
                 })}
             </List>
             <Divider />

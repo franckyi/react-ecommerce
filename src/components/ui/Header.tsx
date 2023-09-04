@@ -1,12 +1,12 @@
 import PrimarySearchAppBar from "../PrimarySearchAppBar";
 import TopBar from "./TopBar";
 
-export default function Header({ products }) {
+export default function Header({ allProducts }) {
 
     return (
         <header>
             <TopBar />
-            <PrimarySearchAppBar products={products} />
+            <PrimarySearchAppBar allProducts={allProducts} />
         </header>
     )
 }

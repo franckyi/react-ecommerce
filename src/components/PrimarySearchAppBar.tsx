@@ -47,7 +47,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-export default function PrimarySearchAppBar({ products }) {
+export default function PrimarySearchAppBar({ allProducts }) {
     const { filters, setFilters } = React.useContext(FiltersContext);
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
@@ -175,7 +175,7 @@ export default function PrimarySearchAppBar({ products }) {
                     </Search>
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                        <Cart products={products} />
+                        <Cart allProducts={allProducts} />
                         <IconButton
                             size="large"
                             edge="end"
