@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
-import { FiltersContext } from '../../model/filterContext';
+import { FiltersContext } from '../../context/filterContext';
 
 export default function CategoriesChip() {
     const { filters, setFilters } = React.useContext(FiltersContext);

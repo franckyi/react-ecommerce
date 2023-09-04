@@ -7,7 +7,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import { Badge, Button, IconButton } from '@mui/material';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import { CartContext } from '../model/cartContext';
+import { CartContext } from '../context/cartContext';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function CartPreview() {
@@ -19,6 +19,20 @@ export default function CartPreview() {
     });
 
     const { cart, setCart } = React.useContext(CartContext);
+
+    const handleAddItem = () => {
+        console.log('handleAddItem()')
+        console.log('counter:', counter)
+        console.log('cart:', cart)
+        setCart({
+            ...cart,
+            products: cart.products.slice().push(props.item),
+        })
+    }
+
+    const handleRemoveItem = () => {
+        console.log('handleRemoveItem()')
+    }
 
     const toggleDrawer =
         (anchor: Anchor, open: boolean) =>
@@ -51,7 +65,7 @@ export default function CartPreview() {
                             draggable="false"
                         />
                         <ListItemText primary={item.title} />
-                        <Button variant="contained" color="error" startIcon={<DeleteIcon />}>Remove</Button>
+                        <Button onClick={handleRemoveItem} variant="contained" color="error" startIcon={<DeleteIcon />}>Remove</Button>
                     </ListItem>
                 ))}
             </List>

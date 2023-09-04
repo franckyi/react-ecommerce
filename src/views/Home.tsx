@@ -1,18 +1,30 @@
-import ProductList from '../components/common/ProductList';
-import Faq from '../components/common/Faq';
-import FilteredProductList from '../components/common/FilteredProductList';
-import CategoriesChip from '../components/common/CategoriesChip';
+import ProductList from '../components/ProductList';
+import Faq from '../components/Faq';
+import FilteredProductList from '../components/FilteredProductList';
+import CategoriesChip from '../components/ui/CategoriesChip';
 import FiltersDrawer from '../components/FiltersDrawer';
+import Header from '../components/ui/Header';
+import { CartContext, cartInitialState } from '../context/cartContext';
+import { useState } from 'react';
 
-export default function Home({ products, handleResetFilters, loading, setLoading }) {
+export default function Home({ filters, products, loading, setLoading, handleResetFilters }) {
+    const [cart, setCart] = useState(cartInitialState);
+
     return (
-        <main>
-            <CategoriesChip />
-            <FilteredProductList products={products} handleResetFilters={handleResetFilters} loading={loading} setLoading={setLoading} />
-            <h2>Top rated products</h2>
-            <ProductList products={products} minRating={4.7} loading={loading} setLoading={setLoading} />
-            <Faq />
-            <FiltersDrawer handleResetFilters={handleResetFilters} />
-        </main>
+        <CartContext.Provider value={{ cart }}>
+            <main>
+                <Header />
+                <section className="catalogue">
+                    <h5>{JSON.stringify(filters)}</h5>
+                    <h5>{JSON.stringify(cart)}</h5>
+                    <CategoriesChip />
+                    <FilteredProductList products={products} handleResetFilters={handleResetFilters} loading={loading} />
+                    <h2>Top rated products</h2>
+                    <ProductList products={products} minRating={4.7} loading={loading} setLoading={setLoading} />
+                    <Faq />
+                    <FiltersDrawer handleResetFilters={handleResetFilters} />
+                </section>
+            </main>
+        </CartContext.Provider>
     )
 }

@@ -2,13 +2,13 @@ import * as React from 'react';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Button from '@mui/material/Button';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-import PriceSlider from './common/PriceSlider';
-import CategoriesChip from './common/CategoriesChip';
-import RatingSlider from './common/RatingSlider';
+import PriceSlider from './ui/PriceSlider';
+import CategoriesChip from './ui/CategoriesChip';
+import RatingSlider from './ui/RatingSlider';
 
 type Anchor = 'Filter products';
 
-export default function FiltersDrawer() {
+export default function FiltersDrawer({ handleResetFilters }) {
     const [state, setState] = React.useState({
         bottom: false,
     });
@@ -40,9 +40,12 @@ export default function FiltersDrawer() {
                         onOpen={toggleDrawer(anchor, true)}
                         className='drawer'
                     >
-                        <PriceSlider />
-                        <RatingSlider />
+                        <div className="d-flex">
+                            <PriceSlider />
+                            <RatingSlider />
+                        </div>
                         <CategoriesChip />
+                        <Button onClick={handleResetFilters} sx={{ textTransform: 'capitalize' }}>Reset filters</Button>
                     </SwipeableDrawer>
                 </React.Fragment>
             ))}

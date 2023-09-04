@@ -9,7 +9,7 @@ import Rating from '@mui/material/Rating';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import BasicButtonGroup from './ButtonGroup';
-import { CartContext } from '../../model/cartContext';
+import { CartContext } from '../../context/cartContext';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -27,19 +27,31 @@ export default function ProductCard(props) {
   const [value, setValue] = React.useState<number | null>(2);
   const [counter, setCounter] = React.useState(1);
   const { cart, setCart } = React.useContext(CartContext);
+  const [newItem, setNewItem] = React.useState(null);
 
   // MODAL
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const handleAddToCart = () => {
+  const handleAddItem = () => {
+    console.log('handleAddItem()')
+    console.log('counter:', counter)
     console.log('cart:', cart)
-    setCart({
-      ...cart,
-      products: cart.products.push(props.item),
-      counter: cart.counter += 1
-    })
+    // let newItem = cart.products.slice().concat(props.item);
+    // console.log('newItem:', newItem)
+
+    // IDENTIFY AND SET NEW ITEM
+    setNewItem(props.item)
+
+    // THEN CONCAT THAT ITEM TO CURRENT ARRAY
+
+    // LASTLY SET THAT ARRAY AS PRODUCTS IN SETCART
+
+    // setCart({
+    //   ...cart,
+    //   products: ,
+    // })
   }
 
   return (
@@ -88,6 +100,7 @@ export default function ProductCard(props) {
                 $ {(props.item.price * counter).toFixed(2)}
               </Typography>
             </div>
+            // TODO
             <Button size="small" color="primary" variant="contained">Add to cart</Button>
             <img
               src="payments.png"
@@ -129,7 +142,7 @@ export default function ProductCard(props) {
         </div>
         <CardActions className='product-list__item--cta'>
           <BasicButtonGroup counter={counter} setCounter={setCounter} />
-          <Button onClick={handleAddToCart} size="small" color="primary" variant="outlined">Add to cart</Button>
+          <Button onClick={handleAddItem} size="small" color="primary" variant="outlined">Add to cart</Button>
         </CardActions>
       </Card>
     </>

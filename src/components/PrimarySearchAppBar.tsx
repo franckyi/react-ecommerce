@@ -14,8 +14,9 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import { FiltersContext } from '../../model/filterContext';
-import CartPreview from '../CartPreview';
+import { FiltersContext } from '../context/filterContext';
+import CartPreview from './CartPreview';
+// import { CartContext } from '../../model/cartContext';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',

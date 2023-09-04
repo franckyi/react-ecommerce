@@ -1,24 +1,26 @@
 import './App.css';
+import { useContext, useEffect, useState } from "react";
+import { Routes, Route } from 'react-router-dom';
 import Home from './views/Home';
-import { useEffect, useState, useContext } from "react";
 import { Product } from './types/product';
 import API from './api/api-variables';
-import { FiltersContext, initialState } from './model/filterContext'
-import Header from './components/common/Header';
-import { CartContext } from './model/cartContext';
+import About from './views/About';
+import { FiltersContext, filterInitialState } from './context/filterContext'
 
 function App() {
-  const [filters, setFilters] = useState(useContext(FiltersContext));
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-  const [cart, setCart] = useState(useContext(CartContext));
+  const [filters, setFilters] = useState(useContext(FiltersContext));
 
   const handleResetFilters = () => {
-    setFilters(initialState)
+    setFilters(filterInitialState)
   }
 
   useEffect(() => {
-    fetch(`${API.URL}/${API.PRODUCTS}`)
+    const URL = filters.category === 'All' ?
+      `${API.URL}/${API.PRODUCTS}` : `${API.URL}/${API.CATEGORY}/${filters.category}`
+
+    fetch(URL)
       .then(response => response.json())
       .then(json => {
         console.log(json);
@@ -29,12 +31,10 @@ function App() {
 
   return (
     <FiltersContext.Provider value={{ filters, setFilters }}>
-      <CartContext.Provider value={{ cart, setCart }}>
-        <Header />
-        <h5>{JSON.stringify(filters)}</h5>
-        <h5>{JSON.stringify(cart)}</h5>
-        <Home products={products} handleResetFilters={handleResetFilters} loading={loading} setLoading={setLoading} />
-      </CartContext.Provider>
+      <Routes>
+        <Route path='/' element={<Home filters={filters} products={products} loading={loading} setLoading={setLoading} handleResetFilters={handleResetFilters} />} />
+        <Route path='/about' element={<About />} />
+      </Routes>
     </FiltersContext.Provider>
   )
 }

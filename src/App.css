@@ -1,7 +1,5 @@
 main {
-  padding: 2rem;
   margin: 0 auto;
-  max-width: 1280px;
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
@@ -14,6 +12,10 @@ body {
 
 .top-bar a, .top-bar a:visited, .top-bar a:focus, .top-bar a:focus-visible, .top-bar a:active {
   color: #333;
+}
+
+.catalogue {
+  padding: 2rem;
 }
 
 .product-list {

@@ -1,30 +1,33 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
-import { FiltersContext } from '../../model/filterContext';
+import { FiltersContext, initialState } from '../../context/filterContext';
 
 const marks = [
     {
-        value: 0,
-        label: '0',
+        value: 1,
+        label: '$1',
     },
     {
-        value: 5,
-        label: '5',
+        value: 500,
+        label: '$500',
+    },
+    {
+        value: 2000,
+        label: '$2.000',
     }
 ];
 
 function valuetext(value: number) {
-    return `${value}`;
+    return `$${value}`;
 }
 
-export default function RatingSlider() {
+export default function PriceSlider() {
     const { filters, setFilters } = React.useContext(FiltersContext);
     const handleChange = (event: Event, newValue: number | number[]) => {
-        console.log('changed price range:', newValue)
         setFilters({
             ...filters,
-            rating: {
+            price: {
                 min: newValue[0],
                 max: newValue[1],
             }
@@ -32,18 +35,18 @@ export default function RatingSlider() {
     };
 
     return (
-        <Box sx={{ width: 320, display: 'flex', gap: '15px' }}>
-            <span>Rating: </span>
+        <Box sx={{ width: 300, display: 'flex', gap: '15px' }}>
+            <span>Price: </span>
             <Slider
                 aria-label="Always visible"
                 getAriaValueText={valuetext}
-                step={.5}
+                step={10}
                 marks={marks}
                 valueLabelDisplay="on"
-                value={[filters.rating.min, filters.rating.max]}
+                value={[filters.price.min, filters.price.max]}
                 onChange={handleChange}
-                min={0}
-                max={5}
+                min={1}
+                max={2000}
             />
         </Box>
     );
