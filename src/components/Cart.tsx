@@ -39,7 +39,7 @@ export default function Cart(props: CartProps) {
 
     const list = (anchor: Anchor) => (
         <Box
-            sx={{ width: 400, padding: '20px' }}
+            sx={{ width: 450, padding: '20px' }}
             role="presentation"
             onKeyDown={toggleDrawer(anchor, false)}
         >
