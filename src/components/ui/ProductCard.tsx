@@ -10,7 +10,6 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import BasicButtonGroup from './ButtonGroup';
 import { useCart } from '../../context/cartContext';
-// import { CartContext, useCart } from '../../context/cartContext';
 
 const style = {
   position: 'absolute' as 'absolute',
