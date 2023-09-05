@@ -28,17 +28,20 @@ export function CartContextProvider({ children }: CartProviderProps) {
     const [totalQuantity, setTotalQuantity] = useState<number>(0);
 
     function getItemQuantity(id: number) {
-        return cartItems.find(item => item.id === id)?.quantity || 0;
+        return cartItems.find(item => {
+            if (item.id == undefined) { return }
+            return item.id === id
+        })?.quantity || 0;
     }
 
     function incrementItemQuantity(id: number) {
         setTotalQuantity(totalQuantity => totalQuantity + 1)
         setCartItems(currentCartItems => {
-            if (currentCartItems.find(item => item.id === id) == null) {
+            if (currentCartItems.find(item => item!.id === id) == null) {
                 return [...currentCartItems, { id, quantity: 1 }]
             } else {
                 return currentCartItems.map(item => {
-                    if (item.id === id) {
+                    if (item!.id === id) {
                         return {
                             ...item,
                             quantity: item.quantity + 1
@@ -52,11 +55,11 @@ export function CartContextProvider({ children }: CartProviderProps) {
     function decrementItemQuantity(id: number) {
         setTotalQuantity(totalQuantity => totalQuantity - 1)
         setCartItems(currentCartItems => {
-            if (currentCartItems.find(item => item.id === id)?.quantity === 1) {
-                return currentCartItems.filter(item => item.id !== id)
+            if (currentCartItems.find(item => item!.id === id)?.quantity === 1) {
+                return currentCartItems.filter(item => item!.id !== id)
             } else {
                 return currentCartItems.map(item => {
-                    if (item.id === id) {
+                    if (item!.id === id) {
                         return {
                             ...item,
                             quantity: item.quantity - 1
@@ -69,7 +72,7 @@ export function CartContextProvider({ children }: CartProviderProps) {
 
     function removeFromCart(id: number) {
         setCartItems(currentCartItems => {
-            return currentCartItems.filter(item => item.id !== id)
+            return currentCartItems.filter(item => item!.id !== id)
         })
     }
 

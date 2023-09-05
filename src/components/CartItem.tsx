@@ -14,7 +14,7 @@ export function CartItem(props: CartItem) {
     if (item == null) return null;
 
     return (
-        <ListItem key={item.id} {...item} disablePadding>
+        <ListItem disablePadding>
             <img
                 className="product-thumb"
                 src={item.image}

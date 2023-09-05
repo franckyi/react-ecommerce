@@ -46,11 +46,12 @@ export default function Cart(props: CartProps) {
             <Button onClick={toggleDrawer(anchor, false)} variant="outlined" color="primary" sx={{ marginBottom: '20px' }}>Close</Button>
             <List>
                 {cartItems.map(item => {
-                    return <CartItem currentItem={item} allProducts={allProducts} />
+                    return <CartItem key={item.id} currentItem={item} allProducts={allProducts} />
                 })}
             </List>
+            {totalQuantity === 0 && '🐶 Empty here ..'}
             <Divider sx={{ margin: '40px 0' }} />
-            <Button variant="contained" color="primary" sx={{ marginTop: '20px' }}>Checkout</Button>
+            {totalQuantity > 0 && <Button variant="contained" color="primary" sx={{ marginTop: '20px' }}>Checkout</Button>}
         </Box>
     );
 
