@@ -1,27 +1,13 @@
-import { Dispatch, SetStateAction, createContext, useContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { CartProviderProps } from "../types/cartProviderProps";
-
-type CartContext = {
-    cartItems: CartItem[]
-    getItemQuantity: (id: number) => number
-    incrementItemQuantity: (id: number) => void
-    decrementItemQuantity: (id: number) => void
-    removeFromCart: (id: number) => void
-    totalQuantity: number
-    setTotalQuantity: Dispatch<SetStateAction<number>>
-}
-
-type CartItem = {
-    id: number,
-    quantity: number,
-    totalQuantity: number
-}
+import { CartItem } from "../types/cartItem";
 
 export function useCart() {
     return useContext(CartContext)
 }
 
-const CartContext = createContext({} as CartContext);
+// const CartContext = createContext({} as CartContext);
+const CartContext = createContext({});
 
 export function CartContextProvider({ children }: CartProviderProps) {
     const [cartItems, setCartItems] = useState<CartItem[]>([])

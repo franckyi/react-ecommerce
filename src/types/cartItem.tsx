@@ -1,5 +1,5 @@
-export interface CartItem {
-    product: string,
-    counter: number,
-    total: number
+export type CartItem = {
+    id: number,
+    quantity: number,
+    totalQuantity: number
 }
