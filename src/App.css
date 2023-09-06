@@ -52,6 +52,10 @@ body {
 }
 .product-list img {
   object-fit: contain;
+  transition: all ease-in-out 500ms;
+}
+.product-list img:hover {
+  scale: 1.15;
 }
 .product-list__item--cta {
   display: flex;

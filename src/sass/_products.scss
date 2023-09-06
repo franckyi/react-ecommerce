@@ -36,6 +36,11 @@
 
     img {
         object-fit: contain;
+        transition: all ease-in-out 500ms;
+
+        &:hover {
+            scale: 1.15;
+        }
     }
 
     &__item--cta {

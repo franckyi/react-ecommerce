@@ -6,7 +6,7 @@ import { FiltersContext } from '../../context/filterContext';
 export default function CategoriesChip() {
     const { filters, setFilters } = React.useContext(FiltersContext);
 
-    const handleClick = (e) => {
+    const handleClick = (e: React.MouseEvent) => {
         setFilters({
             ...filters,
             category: e.target.innerHTML
