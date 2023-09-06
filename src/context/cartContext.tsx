@@ -1,13 +1,13 @@
 import { createContext, useContext, useState } from "react";
 import { CartProviderProps } from "../types/cartProviderProps";
 import { CartItem } from "../types/cartItem";
+import { TCartContext } from "../types/cartContext";
 
 export function useCart() {
     return useContext(CartContext)
 }
 
-// const CartContext = createContext({} as CartContext);
-const CartContext = createContext({});
+const CartContext = createContext({} as TCartContext);
 
 export function CartContextProvider({ children }: CartProviderProps) {
     const [cartItems, setCartItems] = useState<CartItem[]>([])
@@ -20,8 +20,15 @@ export function CartContextProvider({ children }: CartProviderProps) {
         })?.quantity || 0;
     }
 
+    // function updateTotalQuantity(id: number) {
+    //     if (--.find(item => item!.id === id) == null) {
+
+    //     }
+    // }
+
     function incrementItemQuantity(id: number) {
-        setTotalQuantity(totalQuantity => totalQuantity + 1)
+        setTotalQuantity(totalQuantity => totalQuantity + 1) // TAKE OUT TO NEW FUNCTION
+
         setCartItems(currentCartItems => {
             if (currentCartItems.find(item => item!.id === id) == null) {
                 return [...currentCartItems, { id, quantity: 1 }]
@@ -32,6 +39,8 @@ export function CartContextProvider({ children }: CartProviderProps) {
                             ...item,
                             quantity: item.quantity + 1
                         }
+                    } else {
+                        return item
                     }
                 })
             }
@@ -39,7 +48,7 @@ export function CartContextProvider({ children }: CartProviderProps) {
     }
 
     function decrementItemQuantity(id: number) {
-        setTotalQuantity(totalQuantity => totalQuantity - 1)
+        setTotalQuantity(totalQuantity => totalQuantity - 1) // TAKE OUT
         setCartItems(currentCartItems => {
             if (currentCartItems.find(item => item!.id === id)?.quantity === 1) {
                 return currentCartItems.filter(item => item!.id !== id)
@@ -50,20 +59,16 @@ export function CartContextProvider({ children }: CartProviderProps) {
                             ...item,
                             quantity: item.quantity - 1
                         }
+                    } else {
+                        return item
                     }
                 })
             }
         })
     }
 
-    function removeFromCart(id: number) {
-        setCartItems(currentCartItems => {
-            return currentCartItems.filter(item => item!.id !== id)
-        })
-    }
-
     return (
-        <CartContext.Provider value={{ cartItems, setCartItems, totalQuantity, setTotalQuantity, getItemQuantity, incrementItemQuantity, decrementItemQuantity, removeFromCart }}>
+        <CartContext.Provider value={{ cartItems, setCartItems, totalQuantity, setTotalQuantity, getItemQuantity, incrementItemQuantity, decrementItemQuantity }}>
             {children}
         </CartContext.Provider>
     )
