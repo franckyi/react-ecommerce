@@ -10,9 +10,10 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import BasicButtonGroup from './ButtonGroup';
 import { useCart } from '../../context/cartContext';
+import { ProductCardProps } from '../../types/productCardProps';
 
 const style = {
-  position: 'absolute' as 'absolute',
+  position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
@@ -23,9 +24,9 @@ const style = {
   p: 4,
 };
 
-export default function ProductCard(props) {
+export default function ProductCard(props: ProductCardProps) {
   const [value, setValue] = React.useState<number | null>(2);
-  const { cartItems, removeFromCart, getItemQuantity, handleIncrementClick } = useCart();
+  const { removeFromCart, getItemQuantity, handleIncrementClick } = useCart();
   const quantity: number = getItemQuantity(props.item.id);
   const { item } = props;
   const itemTotalPrice = item.price !== 0 ? item.price.toFixed(2) * quantity : 0;
@@ -55,6 +56,7 @@ export default function ProductCard(props) {
               draggable="false"
             />
           </div>
+
           <div className="col">
             <div className="rating">
               <Rating
@@ -70,16 +72,18 @@ export default function ProductCard(props) {
                 voted by {props.item.rating.count} users
               </Typography>
             </div>
+
             <p>Categories / <span className="label">{props.item.category}</span></p>
             <Typography id="modal-modal-description" sx={{ fontSize: 14 }}>
               {props.item.description}
             </Typography>
             <div className="d-flex">
               <BasicButtonGroup currentProduct={props.item} />
-              <Typography gutterBottom variant="span" component="div" className='product-list__item--price'>
+              <Typography gutterBottom sx={{ fontWeight: 800 }} component="div" className='product-list__item--price'>
                 $ {quantity === 0 ? props.item.price.toFixed(2) : (props.item.price * quantity).toFixed(2)}
               </Typography>
             </div>
+
             {quantity <= 0 && <Button onClick={() => handleIncrementClick(props.item.id, props.item.price, quantity)} size="small" color="primary" variant="outlined">Add to cart</Button>}
             {quantity > 0 && <Button onClick={() => removeFromCart(props.item.id, itemTotalPrice)} size="small" color="error" variant="contained">Remove</Button>}
             <img
@@ -94,17 +98,20 @@ export default function ProductCard(props) {
 
       <Card sx={{ maxWidth: 320, paddingTop: '10px', paddingBottom: '20px' }} className='product-list__item'>
         <div onClick={handleOpen} className="product-list__upper-part-modal">
+
           <CardMedia
             component="img"
             alt={props.item.title}
             height="220"
             image={props.item.image}
           />
+
           <CardContent className='product-list__item--content'>
-            <Typography gutterBottom variant="span" component="div" className='product-list__item--title'>
-              {props.item.title}
+            <Typography sx={{ fontSize: 16 }} gutterBottom component="div" className='product-list__item--title'>
+              {props.item.title.substring(0, 75)}
             </Typography>
             <div className='d-flex'>
+
               <Rating
                 name="simple-controlled"
                 value={props.item.rating.rate}
@@ -114,12 +121,14 @@ export default function ProductCard(props) {
                   setValue(newValue);
                 }}
               />
-              <Typography gutterBottom variant="span" component="div" className='product-list__item--price'>
+
+              <Typography sx={{ fontWeight: 800 }} gutterBottom component="div" className='product-list__item--price'>
                 $ {quantity === 0 ? props.item.price.toFixed(2) : (props.item.price * quantity).toFixed(2)}
               </Typography>
             </div>
           </CardContent>
         </div>
+
         <CardActions className='product-list__item--cta'>
           <BasicButtonGroup currentProduct={props.item} />
           {quantity <= 0 && <Button onClick={() => handleIncrementClick(props.item.id, props.item.price, quantity)} size="small" color="primary" variant="outlined">Add to cart</Button>}

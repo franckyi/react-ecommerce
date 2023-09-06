@@ -3,14 +3,15 @@ import { FiltersContext } from "../context/filterContext";
 import ProductCard from "./ui/ProductCard";
 import { Button, Typography } from "@mui/material";
 import Spinner from "./ui/Spinner";
+import { FilteredProductListProps } from "../types/filteredProductListProps";
 
-export default function FilteredProductList({ products, handleResetFilters, loading }) {
-    const { filters, setFilters } = useContext(FiltersContext);
+export default function FilteredProductList({ products, handleResetFilters, loading }: FilteredProductListProps) {
+    const { filters } = useContext(FiltersContext);
 
     return (
         <>
             <h2 id="catalogue">Catalogue</h2>
-            <span>Searching in <Typography variant="span" style={{ textTransform: 'capitalize', fontWeight: 700 }}>{filters.category}</Typography> | Price from $ {filters.price.min} to $ {filters.price.max} | ☆ {filters.rating.min} to {filters.rating.max} <Button onClick={handleResetFilters} sx={{ textTransform: 'capitalize' }}>Reset filters</Button></span>
+            <span>Searching in <Typography component="span" style={{ textTransform: 'capitalize', fontWeight: 700 }}>{filters.category}</Typography> | Price from $ {filters.price.min} to $ {filters.price.max} | ☆ {filters.rating.min} to {filters.rating.max} <Button onClick={handleResetFilters} sx={{ textTransform: 'capitalize' }}>Reset filters</Button></span>
             {loading && <Spinner />}
             <section products={products} className="product-list" >
                 {products

@@ -1,8 +1,9 @@
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import { useCart } from '../../context/cartContext';
+import { BasicButtonGroupProps } from '../../types/basicButtonGroupProps';
 
-export default function BasicButtonGroup({ currentProduct }) {
+export default function BasicButtonGroup({ currentProduct }: BasicButtonGroupProps) {
     const { getItemQuantity, handleDecrementClick, handleIncrementClick } = useCart();
     const quantity = getItemQuantity(currentProduct.id);
 

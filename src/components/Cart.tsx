@@ -11,9 +11,7 @@ import { CartProps } from '../types/cartProps';
 
 export default function Cart(props: CartProps) {
     const { allProducts } = props;
-    const [state, setState] = React.useState({
-        bottom: false,
-    });
+    const [state, setState] = React.useState({ bottom: false });
     const { cartItems, emptyCart, totalQuantity, totalPrice } = useCart();
 
     type Anchor = 'bottom';
@@ -60,7 +58,7 @@ export default function Cart(props: CartProps) {
             {(['right'] as const).map((anchor) => (
                 <React.Fragment key={anchor}>
                     <IconButton
-                        onClick={toggleDrawer(anchor, true)}
+                        onClick={toggleDrawer('bottom', true)}
                         size="large"
                         aria-label="new notifications"
                         color="inherit"
@@ -72,10 +70,10 @@ export default function Cart(props: CartProps) {
 
                     <Drawer
                         anchor={anchor}
-                        open={state[anchor]}
-                        onClose={toggleDrawer(anchor, false)}
+                        open={state['bottom']}
+                        onClose={toggleDrawer('bottom', false)}
                     >
-                        {list(anchor)}
+                        {list('bottom')}
                     </Drawer>
                 </React.Fragment>
             ))}

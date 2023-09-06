@@ -1,7 +1,7 @@
 import ProductCard from './ui/ProductCard';
 import Spinner from './ui/Spinner';
 
-export default function ProductList({ products, minRating, loading, setLoading }) {
+export default function ProductList({ products, minRating, loading }) {
     return (
         <>
             {loading && <Spinner />}
