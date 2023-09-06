@@ -25,7 +25,7 @@ export default function RatingSlider() {
         <Box sx={{ width: 320, display: 'flex', gap: '15px' }}>
             <span>Rating: </span>
             <Slider
-                aria-label="Always visible"
+                getAriaLabel={() => "Always visible"}
                 getAriaValueText={valuetext}
                 step={.5}
                 marks={marks}

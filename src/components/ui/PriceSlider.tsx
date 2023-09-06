@@ -38,7 +38,7 @@ export default function PriceSlider() {
         <Box sx={{ width: 300, display: 'flex', gap: '15px' }}>
             <span>Price: </span>
             <Slider
-                aria-label="Always visible"
+                getAriaLabel={() => "Always visible"}
                 getAriaValueText={valuetext}
                 step={10}
                 marks={marks}

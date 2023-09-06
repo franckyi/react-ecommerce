@@ -5,10 +5,10 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import PriceSlider from './ui/PriceSlider';
 import CategoriesChip from './ui/CategoriesChip';
 import RatingSlider from './ui/RatingSlider';
+import { FiltersDrawerProps } from '../types/filtersDraweProps';
+import { Anchor } from '../types/filtersDrawer';
 
-type Anchor = 'Filter products';
-
-export default function FiltersDrawer({ handleResetFilters }) {
+export default function FiltersDrawer({ handleResetFilters }: FiltersDrawerProps) {
     const [state, setState] = React.useState({
         bottom: false,
     });

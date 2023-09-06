@@ -13,7 +13,7 @@ export default function FilteredProductList({ products, handleResetFilters, load
             <h2 id="catalogue">Catalogue</h2>
             <span>Searching in <Typography component="span" style={{ textTransform: 'capitalize', fontWeight: 700 }}>{filters.category}</Typography> | Price from $ {filters.price.min} to $ {filters.price.max} | ☆ {filters.rating.min} to {filters.rating.max} <Button onClick={handleResetFilters} sx={{ textTransform: 'capitalize' }}>Reset filters</Button></span>
             {loading && <Spinner />}
-            <section products={products} className="product-list" >
+            <section className="product-list" >
                 {products
                     .filter(item =>
                         item.title.toUpperCase().includes(filters.query.toUpperCase())
