@@ -2,6 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import { FiltersContext, initialState } from '../../context/filterContext';
+import { TFilters } from '../../types/filters';
 
 const marks = [
     {
@@ -24,14 +25,14 @@ function valuetext(value: number) {
 
 export default function PriceSlider() {
     const { filters, setFilters } = React.useContext(FiltersContext);
-    const handleChange = (event: Event, newValue: number | number[]) => {
+    const handleChange = (event: Event, newValue: number[]) => {
         setFilters({
             ...filters,
             price: {
                 min: newValue[0],
                 max: newValue[1],
             }
-        })
+        } as TFilters)
     };
 
     return (

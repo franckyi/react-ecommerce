@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import { FiltersContext } from '../../context/filterContext';
 import { marks } from '../../model/rating';
+import { TFilters } from '../../types/filters';
 
 function valuetext(value: number) {
     return `${value}`;
@@ -11,14 +12,14 @@ function valuetext(value: number) {
 export default function RatingSlider() {
     const { filters, setFilters } = React.useContext(FiltersContext);
 
-    const handleChange = (newValue: number[]) => {
+    const handleChange = (event: Event, newValue: number[]) => {
         setFilters({
             ...filters,
             rating: {
                 min: newValue[0],
                 max: newValue[1],
             }
-        })
+        } as TFilters)
     };
 
     return (
@@ -31,7 +32,7 @@ export default function RatingSlider() {
                 marks={marks}
                 valueLabelDisplay="on"
                 value={[filters.rating.min, filters.rating.max]}
-                onChange={() => handleChange}
+                onChange={handleChange}
                 min={0}
                 max={5}
             />

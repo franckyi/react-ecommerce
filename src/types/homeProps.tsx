@@ -6,6 +6,5 @@ export type HomeProps = {
     allProducts: Product[]
     products: Product[]
     loading: boolean
-    setLoading: boolean
     handleResetFilters: Dispatch<SetStateAction<TFilters>>
 }

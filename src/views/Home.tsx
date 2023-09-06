@@ -6,7 +6,7 @@ import FiltersDrawer from '../components/FiltersDrawer';
 import Header from '../components/ui/Header';
 import { HomeProps } from '../types/homeProps';
 
-export default function Home({ allProducts, products, loading, setLoading, handleResetFilters }: HomeProps) {
+export default function Home({ allProducts, products, loading, handleResetFilters }: HomeProps) {
     return (
         <main>
             <Header allProducts={allProducts} />
@@ -14,7 +14,7 @@ export default function Home({ allProducts, products, loading, setLoading, handl
                 <CategoriesChip />
                 <FilteredProductList products={products} handleResetFilters={handleResetFilters} loading={loading} />
                 <h2 id="top-rated">Top rated products</h2>
-                <ProductList products={products} minRating={4.7} loading={loading} setLoading={setLoading} />
+                <ProductList products={products} minRating={4.7} loading={loading} />
                 <Faq />
                 <FiltersDrawer handleResetFilters={handleResetFilters} />
             </section>
