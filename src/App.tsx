@@ -7,12 +7,13 @@ import API from './api/api-variables';
 import About from './views/About';
 import { FiltersContext, filterInitialState } from './context/filterContext'
 import { CartContextProvider } from './context/cartContext';
+import { TFilters } from './types/filters';
 
 function App() {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-  const [filters, setFilters] = useState(useContext(FiltersContext));
+  const [filters, setFilters] = useState<TFilters>(useContext(FiltersContext));
 
   const handleResetFilters = () => {
     setFilters(filterInitialState)

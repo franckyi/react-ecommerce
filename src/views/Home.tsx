@@ -4,8 +4,9 @@ import FilteredProductList from '../components/FilteredProductList';
 import CategoriesChip from '../components/ui/CategoriesChip';
 import FiltersDrawer from '../components/FiltersDrawer';
 import Header from '../components/ui/Header';
+import { HomeProps } from '../types/homeProps';
 
-export default function Home({ allProducts, products, loading, setLoading, handleResetFilters }) {
+export default function Home({ allProducts, products, loading, setLoading, handleResetFilters }: HomeProps) {
     return (
         <main>
             <Header allProducts={allProducts} />

@@ -1,6 +1,7 @@
 import { createContext } from "react";
+import { TFilters } from "../types/filters";
 
-export const filterInitialState = {
+export const filterInitialState: TFilters = {
     query: '',
     category: 'All',
     rating: { min: 0, max: 5 },
