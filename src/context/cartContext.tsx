@@ -11,7 +11,6 @@ const CartContext = createContext({} as TCartContext);
 
 export function CartContextProvider({ children }: CartProviderProps) {
     const [cartItems, setCartItems] = useState<CartItem[]>([])
-    const [totalQuantity, setTotalQuantity] = useState<number>(0);
 
     function getItemQuantity(id: number) {
         return cartItems.find(item => {
@@ -20,15 +19,10 @@ export function CartContextProvider({ children }: CartProviderProps) {
         })?.quantity || 0;
     }
 
-    // function updateTotalQuantity(id: number) {
-    //     if (--.find(item => item!.id === id) == null) {
-
-    //     }
-    // }
+    const totalQuantity = cartItems.length > 0 ?
+        cartItems.map(item => item.quantity).reduce((prev, next) => prev + next) : 0;
 
     function incrementItemQuantity(id: number) {
-        setTotalQuantity(totalQuantity => totalQuantity + 1) // TAKE OUT TO NEW FUNCTION
-
         setCartItems(currentCartItems => {
             if (currentCartItems.find(item => item!.id === id) == null) {
                 return [...currentCartItems, { id, quantity: 1 }]
@@ -48,7 +42,6 @@ export function CartContextProvider({ children }: CartProviderProps) {
     }
 
     function decrementItemQuantity(id: number) {
-        setTotalQuantity(totalQuantity => totalQuantity - 1) // TAKE OUT
         setCartItems(currentCartItems => {
             if (currentCartItems.find(item => item!.id === id)?.quantity === 1) {
                 return currentCartItems.filter(item => item!.id !== id)
@@ -68,7 +61,7 @@ export function CartContextProvider({ children }: CartProviderProps) {
     }
 
     return (
-        <CartContext.Provider value={{ cartItems, setCartItems, totalQuantity, setTotalQuantity, getItemQuantity, incrementItemQuantity, decrementItemQuantity }}>
+        <CartContext.Provider value={{ cartItems, setCartItems, totalQuantity, getItemQuantity, incrementItemQuantity, decrementItemQuantity }}>
             {children}
         </CartContext.Provider>
     )

@@ -7,6 +7,7 @@ import Header from '../components/ui/Header';
 import { useCart } from '../context/cartContext';
 
 export default function Home({ filters, allProducts, products, loading, setLoading, handleResetFilters }) {
+    const { totalQuantity } = useCart();
 
     return (
         <main>
@@ -14,6 +15,7 @@ export default function Home({ filters, allProducts, products, loading, setLoadi
             <section className="catalogue">
                 <h5>{JSON.stringify(filters)}</h5>
                 <h5>{JSON.stringify(useCart())}</h5>
+                <h5>{totalQuantity}</h5>
                 <CategoriesChip />
                 <FilteredProductList products={products} handleResetFilters={handleResetFilters} loading={loading} />
                 <h2>Top rated products</h2>

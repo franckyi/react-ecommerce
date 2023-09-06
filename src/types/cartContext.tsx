@@ -4,9 +4,10 @@ import { CartItem } from "./cartItem"
 export type TCartContext = {
     cartItems: CartItem[]
     setCartItems: Dispatch<SetStateAction<CartItem[]>>
-    getItemQuantity: (id: number) => number
     incrementItemQuantity: (id: number) => void
     decrementItemQuantity: (id: number) => void
+    getItemQuantity: (id: number) => number
     totalQuantity: number
+    totalPrice: number
     setTotalQuantity: Dispatch<SetStateAction<number>>
 }

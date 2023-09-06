@@ -19,7 +19,6 @@ function App() {
   }
 
   useEffect(() => {
-
     fetch(`${API.URL}/${API.PRODUCTS}`)
       .then(response => response.json())
       .then(json => {
