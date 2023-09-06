@@ -20,7 +20,7 @@ function valuetext(value: number) {
 
 export default function RatingSlider() {
     const { filters, setFilters } = React.useContext(FiltersContext);
-    const handleChange = (event: Event, newValue: number | number[]) => {
+    const handleChange = (newValue: number | number[]) => {
         setFilters({
             ...filters,
             rating: {

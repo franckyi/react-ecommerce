@@ -5,9 +5,10 @@ import Home from './views/Home';
 import { Product } from './types/product';
 import API from './api/api-variables';
 import About from './views/About';
-import { FiltersContext, filterInitialState } from './context/filterContext'
+import { FiltersContext } from './context/filterContext'
 import { CartContextProvider } from './context/cartContext';
 import { TFilters } from './types/filters';
+import { filterInitialState } from './model/filtersInitialState';
 
 function App() {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
