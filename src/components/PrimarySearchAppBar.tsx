@@ -17,6 +17,7 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import { FiltersContext } from '../context/filterContext';
 import Cart from './Cart';
 import { Link } from 'react-router-dom';
+import { PrimarySearchAppBarProps } from '../types/primarySearchAppBarProps';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -48,7 +49,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-export default function PrimarySearchAppBar({ allProducts }) {
+export default function PrimarySearchAppBar({ allProducts }: PrimarySearchAppBarProps) {
     const { filters, setFilters } = React.useContext(FiltersContext);
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState<null | HTMLElement>(null);

@@ -1,15 +1,11 @@
 import { Button, ListItem, Typography } from "@mui/material";
 import { useCart } from "../context/cartContext";
-import { Product } from "../types/product";
+import { TCartItemProps } from "../types/cartItemProps";
 
-type CartItemProps = {
-    allProducts: Product[]
-    currentItem: Product
-}
-
-export function CartItem(props: CartItemProps) {
+export function CartItem(props: TCartItemProps) {
     const { currentItem, allProducts } = props;
     const { getItemQuantity, handleDecrementClick, handleIncrementClick } = useCart();
+
     const item = allProducts.find(item => item.id === currentItem.id);
     if (item == null) return null;
 

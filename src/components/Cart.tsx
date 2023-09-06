@@ -7,11 +7,7 @@ import { Badge, Button, IconButton } from '@mui/material';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { useCart } from '../context/cartContext';
 import { CartItem } from './CartItem';
-import { Product } from '../types/product';
-
-type CartProps = {
-    allProducts: Product[]
-}
+import { CartProps } from '../types/cartProps';
 
 export default function Cart(props: CartProps) {
     const { allProducts } = props;
