@@ -1,11 +1,24 @@
 .catalogue {
     padding: 0 2rem 2rem 2rem;
+    text-align: center;
+
+    &>button {
+        height: 2rem;
+        transform: translateX(-50%);
+        transition: all 500ms;
+
+        &:hover {
+            height: 4rem;
+        }
+    }
 }
 
 .product-list {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 1rem;
+    margin-top: 1rem;
     row-gap: 3rem;
 
     &__item {

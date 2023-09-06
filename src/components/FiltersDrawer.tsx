@@ -6,15 +6,12 @@ import PriceSlider from './ui/PriceSlider';
 import CategoriesChip from './ui/CategoriesChip';
 import RatingSlider from './ui/RatingSlider';
 import { FiltersDrawerProps } from '../types/filtersDraweProps';
-import { Anchor } from '../types/filtersDrawer';
 
 export default function FiltersDrawer({ handleResetFilters }: FiltersDrawerProps) {
-    const [state, setState] = React.useState({
-        bottom: false,
-    });
+    const [state, setState] = React.useState({ bottom: false });
 
     const toggleDrawer =
-        (anchor: Anchor, open: boolean) =>
+        (open: boolean) =>
             (event: React.KeyboardEvent | React.MouseEvent) => {
                 if (
                     event &&
@@ -25,30 +22,26 @@ export default function FiltersDrawer({ handleResetFilters }: FiltersDrawerProps
                     return;
                 }
 
-                setState({ ...state, [anchor]: open });
+                setState({ ...state, 'bottom': open });
             };
 
     return (
-        <div>
-            {(['bottom'] as const).map((anchor) => (
-                <React.Fragment key={anchor}>
-                    <Button variant="contained" onClick={toggleDrawer(anchor, true)} sx={{ position: 'fixed', bottom: 0 }}><ArrowUpwardIcon />Filter products</Button>
-                    <SwipeableDrawer
-                        anchor={anchor}
-                        open={state[anchor]}
-                        onClose={toggleDrawer(anchor, false)}
-                        onOpen={toggleDrawer(anchor, true)}
-                        className='drawer'
-                    >
-                        <div className="d-flex">
-                            <PriceSlider />
-                            <RatingSlider />
-                        </div>
-                        <CategoriesChip />
-                        <Button onClick={handleResetFilters} sx={{ textTransform: 'capitalize' }}>Reset filters</Button>
-                    </SwipeableDrawer>
-                </React.Fragment>
-            ))}
-        </div>
+        <>
+            <Button variant="contained" onClick={toggleDrawer(true)} sx={{ position: 'fixed', bottom: 0 }}><ArrowUpwardIcon />Show filters</Button>
+            <SwipeableDrawer
+                anchor={'bottom'}
+                open={state['bottom']}
+                onClose={toggleDrawer(false)}
+                onOpen={toggleDrawer(true)}
+                className='drawer'
+            >
+                <div className="d-flex">
+                    <PriceSlider />
+                    <RatingSlider />
+                </div>
+                <CategoriesChip />
+                {/* <Button onClick={handleResetFilters} sx={{ textTransform: 'capitalize' }}>Reset filters</Button> */}
+            </SwipeableDrawer>
+        </>
     );
 }

@@ -1,1 +1,1 @@
-export type Anchor = 'Filter products';
+export type Anchor = 'bottom';

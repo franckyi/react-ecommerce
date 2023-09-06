@@ -5,6 +5,10 @@ main {
   row-gap: 1rem;
 }
 
+h2 {
+  margin: 3rem;
+}
+
 body {
   background: #fafafa;
   color: #333;
@@ -16,12 +20,23 @@ body {
 
 .catalogue {
   padding: 0 2rem 2rem 2rem;
+  text-align: center;
+}
+.catalogue > button {
+  height: 2rem;
+  transform: translateX(-50%);
+  transition: all 500ms;
+}
+.catalogue > button:hover {
+  height: 4rem;
 }
 
 .product-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
+  margin-top: 1rem;
   row-gap: 3rem;
 }
 .product-list__item {
@@ -104,6 +119,14 @@ body {
   justify-content: center;
   gap: 3rem;
   padding: 20px 20%;
+}
+
+.categories-chip {
+  text-align: center;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 /*# sourceMappingURL=App.css.map */

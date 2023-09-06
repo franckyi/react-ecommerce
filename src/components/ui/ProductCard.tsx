@@ -108,7 +108,7 @@ export default function ProductCard(props: ProductCardProps) {
 
           <CardContent className='product-list__item--content'>
             <Typography sx={{ fontSize: 16 }} gutterBottom component="div" className='product-list__item--title'>
-              {props.item.title.substring(0, 75)}
+              {props.item.title.length > 75 ? props.item.title.substring(0, 75) + '..' : props.item.title}
             </Typography>
             <div className='d-flex'>
 

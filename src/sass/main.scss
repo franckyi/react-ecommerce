@@ -5,3 +5,8 @@
 @import './search';
 @import './helpers';
 @import './drawer';
+@import './categories-chip';
+
+html {
+    scroll-behavior: smooth;
+}
