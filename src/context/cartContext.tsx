@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import { CartProviderProps } from "../types/cartProviderProps";
-import { CartItem } from "../types/cartItem";
+import { TCartItem } from "../types/cartItem";
 import { TCartContext } from "../types/cartContext";
 
 export function useCart() {
@@ -10,7 +10,8 @@ export function useCart() {
 const CartContext = createContext({} as TCartContext);
 
 export function CartContextProvider({ children }: CartProviderProps) {
-    const [cartItems, setCartItems] = useState<CartItem[]>([])
+    const [cartItems, setCartItems] = useState<TCartItem[]>([])
+    // const [totalPrice, setTotalPrice] = useState<number>(0)
 
     function getItemQuantity(id: number) {
         return cartItems.find(item => {
@@ -18,6 +19,13 @@ export function CartContextProvider({ children }: CartProviderProps) {
             return item.id === id
         })?.quantity || 0;
     }
+
+    // function getItemTotalPrice(id: number, price: number) {
+    //     return cartItems.find(item => {
+    //         if (item.id == undefined) { return }
+    //         return item.id === id
+    //     })?.quantity || 0;
+    // }
 
     const totalQuantity = cartItems.length > 0 ?
         cartItems.map(item => item.quantity).reduce((prev, next) => prev + next) : 0;

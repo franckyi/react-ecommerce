@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction } from "react"
-import { CartItem } from "./cartItem"
+import { TCartItem } from "./cartItem"
 
 export type TCartContext = {
-    cartItems: CartItem[]
-    setCartItems: Dispatch<SetStateAction<CartItem[]>>
+    cartItems: TCartItem[]
+    setCartItems: Dispatch<SetStateAction<TCartItem[]>>
     incrementItemQuantity: (id: number) => void
     decrementItemQuantity: (id: number) => void
     getItemQuantity: (id: number) => number

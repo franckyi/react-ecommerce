@@ -1,6 +1,5 @@
-export type CartItem = {
-    id: number,
-    quantity: number,
-    totalQuantity: number
-    totalPrice: number
+export type TCartItem = {
+    id: number
+    quantity: number
+    price: number
 }

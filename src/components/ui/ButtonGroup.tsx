@@ -7,10 +7,10 @@ export default function BasicButtonGroup({ currentProduct }) {
     const quantity = getItemQuantity(currentProduct.id);
 
     return (
-        <ButtonGroup variant="outline" aria-label="outlined primary button group">
-            <Button disabled={quantity < 1} onClick={() => decrementItemQuantity(currentProduct.id)}>-</Button>
+        <ButtonGroup aria-label="outlined primary button group">
+            <Button variant="text" disabled={quantity < 1} onClick={() => decrementItemQuantity(currentProduct.id)}>-</Button>
             {quantity > 0 && <span>{quantity}</span>}
-            <Button onClick={() => incrementItemQuantity(currentProduct.id)}>+</Button>
+            <Button variant="text" onClick={() => incrementItemQuantity(currentProduct.id)}>+</Button>
         </ButtonGroup>
     )
 }

@@ -51,6 +51,7 @@ export default function Cart(props: CartProps) {
             </List>
             {totalQuantity === 0 && '🐶 Empty here ..'}
             <Divider sx={{ margin: '40px 0' }} />
+            <p>In the cart: <b>{totalQuantity}</b></p>
             {totalQuantity > 0 && <Button variant="contained" color="primary" sx={{ marginTop: '20px' }}>Checkout</Button>}
         </Box>
     );
