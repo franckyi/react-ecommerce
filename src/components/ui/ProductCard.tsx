@@ -92,7 +92,7 @@ export default function ProductCard(props) {
         </Box>
       </Modal>
 
-      <Card sx={{ maxWidth: 320 }} className='product-list__item'>
+      <Card sx={{ maxWidth: 320, paddingTop: '10px', paddingBottom: '20px' }} className='product-list__item'>
         <div onClick={handleOpen} className="product-list__upper-part-modal">
           <CardMedia
             component="img"

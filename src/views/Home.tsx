@@ -12,7 +12,7 @@ export default function Home({ allProducts, products, loading, setLoading, handl
             <section className="catalogue">
                 <CategoriesChip />
                 <FilteredProductList products={products} handleResetFilters={handleResetFilters} loading={loading} />
-                <h2>Top rated products</h2>
+                <h2 id="top-rated">Top rated products</h2>
                 <ProductList products={products} minRating={4.7} loading={loading} setLoading={setLoading} />
                 <Faq />
                 <FiltersDrawer handleResetFilters={handleResetFilters} />

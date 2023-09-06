@@ -60,20 +60,17 @@ export function CartContextProvider({ children }: CartProviderProps) {
         })
     }
 
-    function handleIncrementClick(id: number, price: number, quantity: number) {
+    function handleIncrementClick(id: number, price: number) {
         incrementItemQuantity(id);
-        console.log('added', id, price, quantity)
         setTotalPrice(totalPrice + price)
     }
 
-    function handleDecrementClick(id: number, price: number, quantity: number) {
+    function handleDecrementClick(id: number, price: number) {
         decrementItemQuantity(id);
-        console.log('added', id, price, quantity)
         setTotalPrice(totalPrice - price)
     }
 
     function removeFromCart(id: number, itemTotalPrice: number) {
-        console.log('itemTotalPrice:', itemTotalPrice)
         setCartItems(currentCartItems => {
             return currentCartItems.filter(item => item.id !== id)
         })

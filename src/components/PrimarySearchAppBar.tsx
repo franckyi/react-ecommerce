@@ -74,7 +74,6 @@ export default function PrimarySearchAppBar({ allProducts }) {
     };
 
     const handleChange = (event) => {
-        console.log('onChange', event.target.value)
         setInput(event.target.value);
         setFilters({
             ...filters,
@@ -172,6 +171,10 @@ export default function PrimarySearchAppBar({ allProducts }) {
                             value={input}
                         />
                     </Search>
+                    <Box sx={{ flexGrow: 1 }} />
+                    <a href="#daily-promotions"><Typography sx={{ fontSize: '18px', color: 'white', marginRight: '20px' }}>Daily Promotions</Typography></a>
+                    <a href="#top-rated"><Typography sx={{ fontSize: '18px', color: 'white', marginRight: '20px' }}>Top Rated Products</Typography></a>
+                    <a href="#catalogue"><Typography sx={{ fontSize: '18px', color: 'white' }}>Full Catalogue</Typography></a>
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                         <Cart allProducts={allProducts} />

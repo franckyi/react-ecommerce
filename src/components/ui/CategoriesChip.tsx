@@ -7,9 +7,6 @@ export default function CategoriesChip() {
     const { filters, setFilters } = React.useContext(FiltersContext);
 
     const handleClick = (e) => {
-        console.info('You clicked the Chip.');
-        console.info('event innerHTML:', e.target.innerHTML);
-        console.info('event:', e);
         setFilters({
             ...filters,
             category: e.target.innerHTML
@@ -17,7 +14,7 @@ export default function CategoriesChip() {
     };
 
     return (
-        <Stack direction="row" spacing={1} className='categories-chip'>
+        <Stack sx={{ textTransform: 'capitalize' }} direction="row" spacing={1} className='categories-chip'>
             <Chip label="All" variant={filters.category === 'All' ? 'filled' : 'outlined'} onClick={handleClick} />
             <Chip label="electronics" variant={filters.category === 'electronics' ? 'filled' : 'outlined'} onClick={handleClick} />
             <Chip label="jewelery" variant={filters.category === 'jewelery' ? 'filled' : 'outlined'} onClick={handleClick} />

@@ -16,12 +16,11 @@ type CartProps = {
 export default function Cart(props: CartProps) {
     const { allProducts } = props;
     const [state, setState] = React.useState({
-        top: false,
-        left: false,
         bottom: false,
-        right: false,
     });
     const { cartItems, emptyCart, totalQuantity, totalPrice } = useCart();
+
+    type Anchor = 'bottom';
 
     const toggleDrawer =
         (anchor: Anchor, open: boolean) =>
