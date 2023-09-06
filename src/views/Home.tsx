@@ -4,18 +4,12 @@ import FilteredProductList from '../components/FilteredProductList';
 import CategoriesChip from '../components/ui/CategoriesChip';
 import FiltersDrawer from '../components/FiltersDrawer';
 import Header from '../components/ui/Header';
-import { useCart } from '../context/cartContext';
 
-export default function Home({ filters, allProducts, products, loading, setLoading, handleResetFilters }) {
-    const { totalQuantity } = useCart();
-
+export default function Home({ allProducts, products, loading, setLoading, handleResetFilters }) {
     return (
         <main>
             <Header allProducts={allProducts} />
             <section className="catalogue">
-                <h5>{JSON.stringify(filters)}</h5>
-                <h5>{JSON.stringify(useCart())}</h5>
-                <h5>{totalQuantity}</h5>
                 <CategoriesChip />
                 <FilteredProductList products={products} handleResetFilters={handleResetFilters} loading={loading} />
                 <h2>Top rated products</h2>

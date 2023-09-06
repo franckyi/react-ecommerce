@@ -8,8 +8,8 @@ type CartItem = {
 }
 
 export function CartItem(props: CartItem) {
-    const { allProducts, currentItem } = props;
-    const { getItemQuantity, incrementItemQuantity, decrementItemQuantity } = useCart();
+    const { currentItem, allProducts } = props;
+    const { getItemQuantity, handleDecrementClick, handleIncrementClick } = useCart();
     const item = allProducts.find(item => item.id === currentItem.id);
     if (item == null) return null;
 
@@ -24,8 +24,8 @@ export function CartItem(props: CartItem) {
             />
             <Typography sx={{ fontSize: 15, marginLeft: '10px', marginRight: '15px' }}>{item.title.substring(0, 25)}</Typography>
             <Typography sx={{ fontSize: 15, marginLeft: '10px', marginRight: '15px' }}>({getItemQuantity(item.id)}) <b>$ {getItemQuantity(item.id) * item.price}</b></Typography>
-            <Button onClick={() => decrementItemQuantity(item.id)} sx={{ fontSize: 12, padding: 0, width: '10px' }} variant="outlined" color="primary">-</Button>
-            <Button onClick={() => incrementItemQuantity(item.id)} sx={{ fontSize: 12, padding: 0, width: '10px', marginLeft: '5px' }} variant="outlined" color="primary">+</Button>
+            <Button onClick={() => handleDecrementClick(item.id, item.price, getItemQuantity(item.id))} sx={{ fontSize: 12, padding: 0, width: '10px' }} variant="outlined" color="primary">-</Button>
+            <Button onClick={() => handleIncrementClick(item.id, item.price, getItemQuantity(item.id))} sx={{ fontSize: 12, padding: 0, width: '10px', marginLeft: '5px' }} variant="outlined" color="primary">+</Button>
         </ListItem>
     )
 }

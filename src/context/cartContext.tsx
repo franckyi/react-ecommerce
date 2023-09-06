@@ -11,7 +11,9 @@ const CartContext = createContext({} as TCartContext);
 
 export function CartContextProvider({ children }: CartProviderProps) {
     const [cartItems, setCartItems] = useState<TCartItem[]>([])
-    // const [totalPrice, setTotalPrice] = useState<number>(0)
+    const totalQuantity: number = cartItems.length > 0 ?
+        cartItems.map(item => item.quantity).reduce((prev, next) => prev + next) : 0;
+    const [totalPrice, setTotalPrice] = useState<number>(0);
 
     function getItemQuantity(id: number) {
         return cartItems.find(item => {
@@ -20,23 +22,13 @@ export function CartContextProvider({ children }: CartProviderProps) {
         })?.quantity || 0;
     }
 
-    // function getItemTotalPrice(id: number, price: number) {
-    //     return cartItems.find(item => {
-    //         if (item.id == undefined) { return }
-    //         return item.id === id
-    //     })?.quantity || 0;
-    // }
-
-    const totalQuantity = cartItems.length > 0 ?
-        cartItems.map(item => item.quantity).reduce((prev, next) => prev + next) : 0;
-
     function incrementItemQuantity(id: number) {
         setCartItems(currentCartItems => {
-            if (currentCartItems.find(item => item!.id === id) == null) {
+            if (currentCartItems.find(item => item.id === id) == null) {
                 return [...currentCartItems, { id, quantity: 1 }]
             } else {
                 return currentCartItems.map(item => {
-                    if (item!.id === id) {
+                    if (item.id === id) {
                         return {
                             ...item,
                             quantity: item.quantity + 1
@@ -68,10 +60,34 @@ export function CartContextProvider({ children }: CartProviderProps) {
         })
     }
 
+    function handleIncrementClick(id: number, price: number, quantity: number) {
+        incrementItemQuantity(id);
+        console.log('added', id, price, quantity)
+        setTotalPrice(totalPrice + price)
+    }
+
+    function handleDecrementClick(id: number, price: number, quantity: number) {
+        decrementItemQuantity(id);
+        console.log('added', id, price, quantity)
+        setTotalPrice(totalPrice - price)
+    }
+
+    function removeFromCart(id: number, itemTotalPrice: number) {
+        console.log('itemTotalPrice:', itemTotalPrice)
+        setCartItems(currentCartItems => {
+            return currentCartItems.filter(item => item.id !== id)
+        })
+        setTotalPrice(totalPrice - itemTotalPrice)
+    }
+
+    function emptyCart() {
+        setCartItems([])
+        setTotalPrice(0)
+    }
+
     return (
-        <CartContext.Provider value={{ cartItems, setCartItems, totalQuantity, getItemQuantity, incrementItemQuantity, decrementItemQuantity }}>
+        <CartContext.Provider value={{ cartItems, setCartItems, removeFromCart, emptyCart, handleIncrementClick, handleDecrementClick, totalQuantity, totalPrice, getItemQuantity, incrementItemQuantity, decrementItemQuantity }}>
             {children}
         </CartContext.Provider>
     )
-
 }

@@ -25,14 +25,15 @@ const style = {
 
 export default function ProductCard(props) {
   const [value, setValue] = React.useState<number | null>(2);
-  const { cartItems, getItemQuantity, incrementItemQuantity } = useCart();
-  const quantity = getItemQuantity(props.item.id);
+  const { cartItems, removeFromCart, getItemQuantity, handleIncrementClick } = useCart();
+  const quantity: number = getItemQuantity(props.item.id);
+  const { item } = props;
+  const itemTotalPrice = item.price !== 0 ? item.price.toFixed(2) * quantity : 0;
 
   // MODAL
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
   return (
     <>
       <Modal
@@ -74,13 +75,13 @@ export default function ProductCard(props) {
               {props.item.description}
             </Typography>
             <div className="d-flex">
-              {/* <BasicButtonGroup counter={counter} setCounter={setCounter} /> */}
               <BasicButtonGroup currentProduct={props.item} />
               <Typography gutterBottom variant="span" component="div" className='product-list__item--price'>
-                $ {(props.item.price * quantity).toFixed(2)}
+                $ {quantity === 0 ? props.item.price.toFixed(2) : (props.item.price * quantity).toFixed(2)}
               </Typography>
             </div>
-            <Button onClick={() => incrementItemQuantity(props.item.id)} size="small" color="primary" variant="outlined">Add to cart</Button>
+            {quantity <= 0 && <Button onClick={() => handleIncrementClick(props.item.id, props.item.price, quantity)} size="small" color="primary" variant="outlined">Add to cart</Button>}
+            {quantity > 0 && <Button onClick={() => removeFromCart(props.item.id, (props.item.price * quantity), quantity)} size="small" color="error" variant="contained">Remove</Button>}
             <img
               src="payments.png"
               alt="Our payment methods"
@@ -121,7 +122,8 @@ export default function ProductCard(props) {
         </div>
         <CardActions className='product-list__item--cta'>
           <BasicButtonGroup currentProduct={props.item} />
-          <Button onClick={() => incrementItemQuantity(props.item.id)} size="small" color="primary" variant="outlined">Add to cart</Button>
+          {quantity <= 0 && <Button onClick={() => handleIncrementClick(props.item.id, props.item.price, quantity)} size="small" color="primary" variant="outlined">Add to cart</Button>}
+          {quantity > 0 && <Button onClick={() => removeFromCart(props.item.id, itemTotalPrice)} size="small" color="error" variant="contained">Remove</Button>}
         </CardActions>
       </Card>
     </>

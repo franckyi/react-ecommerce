@@ -3,14 +3,14 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import { useCart } from '../../context/cartContext';
 
 export default function BasicButtonGroup({ currentProduct }) {
-    const { getItemQuantity, incrementItemQuantity, decrementItemQuantity } = useCart();
+    const { getItemQuantity, handleDecrementClick, handleIncrementClick } = useCart();
     const quantity = getItemQuantity(currentProduct.id);
 
     return (
         <ButtonGroup aria-label="outlined primary button group">
-            <Button variant="text" disabled={quantity < 1} onClick={() => decrementItemQuantity(currentProduct.id)}>-</Button>
+            <Button variant="text" disabled={quantity < 1} onClick={() => handleDecrementClick(currentProduct.id, currentProduct.price, quantity)}>-</Button>
             {quantity > 0 && <span>{quantity}</span>}
-            <Button variant="text" onClick={() => incrementItemQuantity(currentProduct.id)}>+</Button>
+            <Button variant="text" onClick={() => handleIncrementClick(currentProduct.id, currentProduct.price, quantity)}>+</Button>
         </ButtonGroup>
     )
 }

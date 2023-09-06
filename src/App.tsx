@@ -9,8 +9,8 @@ import { FiltersContext, filterInitialState } from './context/filterContext'
 import { CartContextProvider } from './context/cartContext';
 
 function App() {
-  const [products, setProducts] = useState<Product[]>([]);
   const [allProducts, setAllProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState(useContext(FiltersContext));
 
