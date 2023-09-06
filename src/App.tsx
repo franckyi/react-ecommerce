@@ -42,7 +42,7 @@ function App() {
     <CartContextProvider>
       <FiltersContext.Provider value={{ filters, setFilters }}>
         <Routes>
-          <Route path='/' element={<Home filters={filters} allProducts={allProducts} products={products} loading={loading} setLoading={setLoading} handleResetFilters={handleResetFilters} />} />
+          <Route path='/' element={<Home allProducts={allProducts} products={products} loading={loading} setLoading={setLoading} handleResetFilters={handleResetFilters} />} />
           <Route path='/about' element={<About />} />
         </Routes>
       </FiltersContext.Provider>

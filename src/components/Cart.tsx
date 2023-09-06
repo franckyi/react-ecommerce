@@ -59,7 +59,7 @@ export default function Cart(props: CartProps) {
     );
 
     return (
-        <div className="cart">
+        <div className="cart" style={{ width: '150px', textAlign: 'right' }}>
             {totalPrice > 0 && <span>${totalPrice.toFixed(2)}</span>}
             {(['right'] as const).map((anchor) => (
                 <React.Fragment key={anchor}>

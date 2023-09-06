@@ -1,6 +1,6 @@
 import { FaqItem } from "../types/faqItem";
 
-export let faqList: FaqItem[] = [
+export const faqList: FaqItem[] = [
     {
         category: 'Policy',
         question: 'Can I do this on the store?',
