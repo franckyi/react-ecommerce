@@ -81,7 +81,7 @@ export default function ProductCard(props) {
               </Typography>
             </div>
             {quantity <= 0 && <Button onClick={() => handleIncrementClick(props.item.id, props.item.price, quantity)} size="small" color="primary" variant="outlined">Add to cart</Button>}
-            {quantity > 0 && <Button onClick={() => removeFromCart(props.item.id, (props.item.price * quantity), quantity)} size="small" color="error" variant="contained">Remove</Button>}
+            {quantity > 0 && <Button onClick={() => removeFromCart(props.item.id, itemTotalPrice)} size="small" color="error" variant="contained">Remove</Button>}
             <img
               src="payments.png"
               alt="Our payment methods"

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { FiltersContext } from "../context/filterContext";
 import ProductCard from "./ui/ProductCard";
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import Spinner from "./ui/Spinner";
 
 export default function FilteredProductList({ products, handleResetFilters, loading }) {
@@ -9,9 +9,9 @@ export default function FilteredProductList({ products, handleResetFilters, load
 
     return (
         <>
-            {loading && <Spinner />}
             <h2>Catalogue</h2>
-            <span>Searching in <span style={{ fontWeight: 700 }}>{filters.category}</span> | Price from $ {filters.price.min} to $ {filters.price.max} | ☆ {filters.rating.min} to {filters.rating.max} <Button onClick={handleResetFilters} sx={{ textTransform: 'capitalize' }}>Reset filters</Button></span>
+            <span>Searching in <Typography variant="span" style={{ textTransform: 'capitalize', fontWeight: 700 }}>{filters.category}</Typography> | Price from $ {filters.price.min} to $ {filters.price.max} | ☆ {filters.rating.min} to {filters.rating.max} <Button onClick={handleResetFilters} sx={{ textTransform: 'capitalize' }}>Reset filters</Button></span>
+            {loading && <Spinner />}
             <section products={products} className="product-list" >
                 {products
                     .filter(item =>

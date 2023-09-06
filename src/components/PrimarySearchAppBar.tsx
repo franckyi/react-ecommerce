@@ -16,6 +16,7 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { FiltersContext } from '../context/filterContext';
 import Cart from './Cart';
+import { Link } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -50,10 +51,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function PrimarySearchAppBar({ allProducts }) {
     const { filters, setFilters } = React.useContext(FiltersContext);
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
-        React.useState<null | HTMLElement>(null);
+    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState<null | HTMLElement>(null);
     const [input, setInput] = React.useState<string>('');
-
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -163,7 +162,7 @@ export default function PrimarySearchAppBar({ allProducts }) {
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static" color="primary">
                 <Toolbar>
-                    <img src="/logo.svg" alt="Ecommerce logo" height={40} /> <Typography sx={{ fontWeight: 700, fontSize: 20, display: 'inline-block' }}>Global Commerce</Typography>
+                    <Link to="/"><img src="/logo.svg" alt="Ecommerce logo" height={40} /> <Typography sx={{ fontWeight: 700, fontSize: 20, display: 'inline-block', color: 'white' }}>Global Commerce</Typography></Link>
                     <Search className='search'>
                         <SearchIcon />
                         <StyledInputBase

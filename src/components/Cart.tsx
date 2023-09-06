@@ -21,7 +21,7 @@ export default function Cart(props: CartProps) {
         bottom: false,
         right: false,
     });
-    const { cartItems, setCartItems, emptyCart, totalQuantity, totalPrice } = useCart();
+    const { cartItems, emptyCart, totalQuantity, totalPrice } = useCart();
 
     const toggleDrawer =
         (anchor: Anchor, open: boolean) =>
@@ -61,6 +61,7 @@ export default function Cart(props: CartProps) {
 
     return (
         <div className="cart">
+            {totalPrice > 0 && <span>${totalPrice.toFixed(2)}</span>}
             {(['right'] as const).map((anchor) => (
                 <React.Fragment key={anchor}>
                     <IconButton
