@@ -36,10 +36,10 @@
 
     img {
         object-fit: contain;
-        transition: all ease-in-out 500ms;
+        transition: all ease-in-out 250ms;
 
         &:hover {
-            scale: 1.15;
+            scale: 1.2;
         }
     }
 

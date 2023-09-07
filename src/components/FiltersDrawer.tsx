@@ -40,7 +40,7 @@ export default function FiltersDrawer({ handleResetFilters }: FiltersDrawerProps
                     <RatingSlider />
                 </div>
                 <CategoriesChip />
-                {/* <Button onClick={handleResetFilters} sx={{ textTransform: 'capitalize' }}>Reset filters</Button> */}
+                <Button onClick={handleResetFilters} sx={{ textTransform: 'capitalize' }}>Reset filters</Button>
             </SwipeableDrawer>
         </>
     );

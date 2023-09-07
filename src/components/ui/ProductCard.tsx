@@ -29,7 +29,8 @@ export default function ProductCard(props: ProductCardProps) {
   const { removeFromCart, getItemQuantity, handleIncrementClick } = useCart();
   const quantity: number = getItemQuantity(props.item.id);
   const { item } = props;
-  const itemTotalPrice = item.price !== 0 ? item.price.toFixed(2) * quantity : 0;
+  // const itemTotalPrice = item.price !== 0 ? (item.price * quantity).toFixed(2) : 0;
+  const itemTotalPrice: number = item.price * quantity;
 
   // MODAL
   const [open, setOpen] = React.useState(false);

@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import { FiltersContext } from '../../context/filterContext';
-import { marks } from '../../model/rating';
+import { marks } from '../../model/ratingSlider';
 import { TFilters } from '../../types/filters';
 
 function valuetext(value: number) {
@@ -12,7 +12,7 @@ function valuetext(value: number) {
 export default function RatingSlider() {
     const { filters, setFilters } = React.useContext(FiltersContext);
 
-    const handleChange = (event: Event, newValue: number | number[]) => {
+    const handleChange = (event: Event, newValue: number[]) => {
         console.log(newValue)
         setFilters({
             ...filters,

@@ -6,7 +6,8 @@ main {
 }
 
 h2 {
-  margin: 3rem;
+  margin: 0 2rem 2rem 2rem;
+  font-size: 32px;
 }
 
 body {
@@ -52,10 +53,10 @@ body {
 }
 .product-list img {
   object-fit: contain;
-  transition: all ease-in-out 500ms;
+  transition: all ease-in-out 250ms;
 }
 .product-list img:hover {
-  scale: 1.15;
+  scale: 1.2;
 }
 .product-list__item--cta {
   display: flex;
@@ -126,7 +127,7 @@ body {
 }
 
 .categories-chip {
-  text-align: center;
+  justify-content: center;
 }
 
 html {

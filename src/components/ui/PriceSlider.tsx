@@ -1,23 +1,9 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
-import { FiltersContext, initialState } from '../../context/filterContext';
+import { FiltersContext } from '../../context/filterContext';
 import { TFilters } from '../../types/filters';
-
-const marks = [
-    {
-        value: 1,
-        label: '$1',
-    },
-    {
-        value: 500,
-        label: '$500',
-    },
-    {
-        value: 2000,
-        label: '$2.000',
-    }
-];
+import { marks } from '../../model/priceSlider';
 
 function valuetext(value: number) {
     return `$${value}`;

@@ -6,15 +6,15 @@ import { FiltersContext } from '../../context/filterContext';
 export default function CategoriesChip() {
     const { filters, setFilters } = React.useContext(FiltersContext);
 
-    const handleClick = (e: React.MouseEvent) => {
+    const handleClick = (e) => {
         setFilters({
             ...filters,
-            category: e.target.innerHTML
+            category: e.target.textContent
         })
     };
 
     return (
-        <Stack sx={{ textTransform: 'capitalize' }} direction="row" spacing={1} className='categories-chip'>
+        <Stack sx={{ textTransform: 'capitalize', marginBottom: '1rem' }} direction="row" spacing={1} className='categories-chip'>
             <Chip label="All" variant={filters.category === 'All' ? 'filled' : 'outlined'} onClick={handleClick} />
             <Chip label="electronics" variant={filters.category === 'electronics' ? 'filled' : 'outlined'} onClick={handleClick} />
             <Chip label="jewelery" variant={filters.category === 'jewelery' ? 'filled' : 'outlined'} onClick={handleClick} />

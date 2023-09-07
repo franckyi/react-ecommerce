@@ -1,6 +1,6 @@
-import { Dispatch, SetStateAction } from "react"
-import { TFilters } from "./filters"
+// import { Dispatch, SetStateAction } from "react"
+// import { TFilters } from "./filters"
 
 export type FiltersDrawerProps = {
-    handleResetFilters: Dispatch<SetStateAction<TFilters>>
+    handleResetFilters: () => void
 }
