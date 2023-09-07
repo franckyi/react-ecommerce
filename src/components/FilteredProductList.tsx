@@ -11,8 +11,7 @@ export default function FilteredProductList({ products, handleResetFilters, load
     return (
         <>
             <span>Searching in <Typography component="span" style={{ textTransform: 'capitalize', fontWeight: 700 }}>{filters.category}</Typography> | Price from $ {filters.price.min} to $ {filters.price.max} | ☆ {filters.rating.min} to {filters.rating.max} <Button onClick={handleResetFilters} sx={{ textTransform: 'capitalize' }}>Reset filters</Button></span>
-            <h2 id="catalogue">Say goodbye to queues, shop online</h2>
-            <section className="product-list" >
+            <section id="catalogue" className="product-list" >
                 {loading && <Spinner />}
                 {products
                     .filter(item =>
