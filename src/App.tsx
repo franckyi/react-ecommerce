@@ -44,7 +44,7 @@ function App() {
     <CartContextProvider>
       <FiltersContext.Provider value={{ filters, setFilters }}>
         <Routes>
-          <Route path='/' element={<Home allProducts={allProducts} products={products} loading={loading} handleResetFilters={handleResetFilters} />} />
+          <Route path='/react-ecommerce/' element={<Home allProducts={allProducts} products={products} loading={loading} handleResetFilters={handleResetFilters} />} />
           <Route path='/about' element={<About />} />
         </Routes>
       </FiltersContext.Provider>

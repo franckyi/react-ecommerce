@@ -9,7 +9,7 @@ export default function About() {
     return (
         <>
             <h2>About works!</h2>
-            <Link to="/">Back to Home page</Link>
+            <Link to="/react-ecommerce/">Back to Home page</Link>
         </>
     )
 }

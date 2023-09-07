@@ -162,7 +162,7 @@ export default function PrimarySearchAppBar({ allProducts }: PrimarySearchAppBar
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static" color="primary">
                 <Toolbar>
-                    <Link to="/"><img src="/logo.svg" alt="Ecommerce logo" height={40} /> <Typography sx={{ fontWeight: 700, fontSize: 20, display: 'inline-block', color: 'white' }}>Global Commerce</Typography></Link>
+                    <Link to="/react-ecommerce/"><img src="/logo.svg" alt="Ecommerce logo" height={40} /> <Typography sx={{ fontWeight: 700, fontSize: 20, display: 'inline-block', color: 'white' }}>Global Commerce</Typography></Link>
                     <Search className='search'>
                         <SearchIcon />
                         <StyledInputBase
