@@ -1,11 +1,10 @@
 import './App.css';
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route } from 'react-router-dom';
 import Home from './views/Home';
 import { Product } from './types/product';
 import API from './api/api-variables';
 import About from './views/About';
-import { FiltersContext } from './context/filterContext'
 import { CartContextProvider } from './context/cartContext';
 import { TFilters } from './types/filters';
 import { filterInitialState } from './model/filtersInitialState';
@@ -14,8 +13,9 @@ function App() {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-  const [filters, setFilters] = useState<TFilters>(useContext(FiltersContext));
+  const [filters, setFilters] = useState<TFilters>(filterInitialState);
 
+  // setFilters directly from children
   const handleResetFilters = () => {
     setFilters(filterInitialState)
   }
@@ -42,12 +42,10 @@ function App() {
 
   return (
     <CartContextProvider>
-      <FiltersContext.Provider value={{ filters, setFilters }}>
         <Routes>
-          <Route path='/' element={<Home allProducts={allProducts} products={products} loading={loading} handleResetFilters={handleResetFilters} />} />
+          <Route path='/' element={<Home allProducts={allProducts} products={products} loading={loading} handleResetFilters={handleResetFilters} filters={filters} setFilters={setFilters} />} />
           <Route path='/about' element={<About />} />
         </Routes>
-      </FiltersContext.Provider>
     </CartContextProvider>
   )
 }

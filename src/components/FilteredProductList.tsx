@@ -1,12 +1,9 @@
-import { useContext } from "react";
-import { FiltersContext } from "../context/filterContext";
 import ProductCard from "./ui/ProductCard";
 import { Button, Typography } from "@mui/material";
 import Spinner from "./ui/Spinner";
 import { FilteredProductListProps } from "../types/filteredProductListProps";
 
-export default function FilteredProductList({ products, handleResetFilters, loading }: FilteredProductListProps) {
-    const { filters } = useContext(FiltersContext);
+export default function FilteredProductList({ products, handleResetFilters, filters, setFilters, loading }: FilteredProductListProps) {
 
     return (
         <>

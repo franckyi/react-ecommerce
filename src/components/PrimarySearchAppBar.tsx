@@ -14,7 +14,6 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import { FiltersContext } from '../context/filterContext';
 import Cart from './Cart';
 import { Link } from 'react-router-dom';
 import { PrimarySearchAppBarProps } from '../types/primarySearchAppBarProps';
@@ -49,8 +48,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-export default function PrimarySearchAppBar({ allProducts }: PrimarySearchAppBarProps) {
-    const { filters, setFilters } = React.useContext(FiltersContext);
+export default function PrimarySearchAppBar({ allProducts, filters, setFilters }: PrimarySearchAppBarProps) {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState<null | HTMLElement>(null);
     const [input, setInput] = React.useState<string>('');

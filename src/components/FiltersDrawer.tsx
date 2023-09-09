@@ -7,7 +7,7 @@ import CategoriesChip from './ui/CategoriesChip';
 import RatingSlider from './ui/RatingSlider';
 import { FiltersDrawerProps } from '../types/filtersDrawerProps';
 
-export default function FiltersDrawer({ handleResetFilters }: FiltersDrawerProps) {
+export default function FiltersDrawer({ handleResetFilters, filters, setFilters }: FiltersDrawerProps) {
     const [state, setState] = React.useState({ bottom: false });
 
     const toggleDrawer =
@@ -36,10 +36,10 @@ export default function FiltersDrawer({ handleResetFilters }: FiltersDrawerProps
                 className='drawer'
             >
                 <div className="d-flex">
-                    <PriceSlider />
-                    <RatingSlider />
+                    <PriceSlider filters={filters} setFilters={setFilters}/>
+                    <RatingSlider filters={filters} setFilters={setFilters} />
                 </div>
-                <CategoriesChip />
+                <CategoriesChip filters={filters} setFilters={setFilters} />
                 <Button onClick={handleResetFilters} sx={{ textTransform: 'capitalize' }}>Reset filters</Button>
             </SwipeableDrawer>
         </>

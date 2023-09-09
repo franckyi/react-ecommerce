@@ -1,18 +1,16 @@
-import * as React from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
-import { FiltersContext } from '../../context/filterContext';
 import { marks } from '../../model/ratingSlider';
 import { TFilters } from '../../types/filters';
+import { SliderProps } from '../../types/sliderProps';
 
 function valuetext(value: number) {
     return `${value}`;
 }
 
-export default function RatingSlider() {
-    const { filters, setFilters } = React.useContext(FiltersContext);
+export default function RatingSlider({filters, setFilters}: SliderProps) {
 
-    const handleChange = (event: Event, newValue: number[]) => {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>, newValue: number[]) => {
         console.log(newValue)
         setFilters({
             ...filters,

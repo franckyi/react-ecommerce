@@ -1,16 +1,15 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
-import { FiltersContext } from '../../context/filterContext';
 import { TFilters } from '../../types/filters';
 import { marks } from '../../model/priceSlider';
+import {SliderProps } from '../../types/sliderProps';
 
 function valuetext(value: number) {
     return `$${value}`;
 }
 
-export default function PriceSlider() {
-    const { filters, setFilters } = React.useContext(FiltersContext);
+export default function PriceSlider({filters, setFilters}: SliderProps) {
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>, newValue: number[]) => {
         setFilters({
             ...filters,

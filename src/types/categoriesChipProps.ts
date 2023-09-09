@@ -1,7 +1,6 @@
 import { TFilters } from "./filters"
 
-export type FiltersDrawerProps = {
+export type CategoriesChipProps = {
     filters: TFilters
     setFilters: React.Dispatch<React.SetStateAction<TFilters>>
-    handleResetFilters: () => void
 }

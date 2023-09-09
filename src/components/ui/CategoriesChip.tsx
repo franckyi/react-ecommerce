@@ -1,11 +1,9 @@
-import * as React from 'react';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
-import { FiltersContext } from '../../context/filterContext';
+import { CategoriesChipProps } from '../../types/categoriesChipProps';
 
-export default function CategoriesChip() {
-    const { filters, setFilters } = React.useContext(FiltersContext);
-
+export default function CategoriesChip({filters, setFilters}: CategoriesChipProps) {
+    // TODO: SET REACT EVENT TYPE
     const handleClick = (e) => {
         setFilters({
             ...filters,
