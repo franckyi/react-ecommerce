@@ -10,7 +10,7 @@ function valuetext(value: number) {
 
 export default function RatingSlider({filters, setFilters}: SliderProps) {
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>, newValue: number[]) => {
+    const handleChange = (event, newValue: number | number[]) => {
         console.log(newValue)
         setFilters({
             ...filters,
