@@ -3,7 +3,7 @@ import { Button, Typography } from "@mui/material";
 import Spinner from "./ui/Spinner";
 import { FilteredProductListProps } from "../types/filteredProductListProps";
 
-export default function FilteredProductList({ products, handleResetFilters, filters, setFilters, loading }: FilteredProductListProps) {
+export default function FilteredProductList({ products, handleResetFilters, filters, loading }: FilteredProductListProps) {
 
     return (
         <>

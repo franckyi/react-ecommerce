@@ -4,10 +4,10 @@ import { CategoriesChipProps } from '../../types/categoriesChipProps';
 
 export default function CategoriesChip({filters, setFilters}: CategoriesChipProps) {
     // TODO: SET REACT EVENT TYPE
-    const handleClick = (e) => {
+    const handleClick = (e: React.MouseEvent) => {
         setFilters({
             ...filters,
-            category: e.target.textContent
+            category: e.currentTarget.textContent
         })
     };
 

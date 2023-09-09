@@ -82,10 +82,6 @@ export function CartContextProvider({ children }: CartProviderProps) {
         setTotalPrice(0)
     }
 
-    // const CartProviderValues = {
-    //     cartItemssetCartItems, removeFromCart, emptyCart, handleIncrementClick, handleDecrementClick, totalQuantity, totalPrice, getItemQuantity, incrementItemQuantity, decrementItemQuantity
-    // }
-
     return (
         <CartContext.Provider value={{ cartItems, setCartItems, removeFromCart, emptyCart, handleIncrementClick, handleDecrementClick, totalQuantity, totalPrice, getItemQuantity, incrementItemQuantity, decrementItemQuantity }}>
             {children}

@@ -1,6 +1,6 @@
 export type TFilters = {
     query: string
-    category: string
+    category: string | null
     rating: {
         min: number
         max: number
