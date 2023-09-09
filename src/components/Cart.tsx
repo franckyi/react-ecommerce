@@ -8,16 +8,15 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { useCart } from '../context/cartContext';
 import { CartItem } from './CartItem';
 import { CartProps } from '../types/cartProps';
+import { TAnchor } from '../types/filtersDrawer';
 
 export default function Cart(props: CartProps) {
     const { allProducts } = props;
     const [state, setState] = React.useState({ bottom: false });
     const { cartItems, emptyCart, totalQuantity, totalPrice } = useCart();
 
-    type Anchor = 'bottom';
-
     const toggleDrawer =
-        (anchor: Anchor, open: boolean) =>
+        (anchor: TAnchor, open: boolean) =>
             (event: React.KeyboardEvent | React.MouseEvent) => {
                 if (
                     event.type === 'keydown' &&
@@ -30,7 +29,7 @@ export default function Cart(props: CartProps) {
                 setState({ ...state, [anchor]: open });
             };
 
-    const list = (anchor: Anchor) => (
+    const list = (anchor: TAnchor) => (
         <Box
             sx={{ width: 450, padding: '20px' }}
             role="presentation"

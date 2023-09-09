@@ -1,4 +1,6 @@
-export const marks = [
+import { TSliderMark } from "../types/sliderMark";
+
+export const marks: TSliderMark[] = [
     {
         value: 0,
         label: '0',
