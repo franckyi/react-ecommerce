@@ -11,7 +11,7 @@ function valuetext(value: number) {
 
 export default function PriceSlider() {
     const { filters, setFilters } = React.useContext(FiltersContext);
-    const handleChange = (event: Event, newValue: number[]) => {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>, newValue: number[]) => {
         setFilters({
             ...filters,
             price: {

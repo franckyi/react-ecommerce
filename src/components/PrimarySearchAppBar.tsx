@@ -74,11 +74,11 @@ export default function PrimarySearchAppBar({ allProducts }: PrimarySearchAppBar
         setMobileMoreAnchorEl(event.currentTarget);
     };
 
-    const handleChange = (event) => {
-        setInput(event.target.value);
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setInput(event.currentTarget.value);
         setFilters({
             ...filters,
-            query: event.target.value
+            query: event.currentTarget.value
         });
     };
 
