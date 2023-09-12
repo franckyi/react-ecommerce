@@ -3,7 +3,6 @@ import Stack from '@mui/material/Stack';
 import { CategoriesChipProps } from '../../types/categoriesChipProps';
 
 export default function CategoriesChip({filters, setFilters}: CategoriesChipProps) {
-    // TODO: SET REACT EVENT TYPE
     const handleClick = (e: React.MouseEvent) => {
         setFilters({
             ...filters,
