@@ -3,6 +3,12 @@
         font-size: clamp(14px, 18px, 18px);
     }
 }
+
+.primary-bar__toolbar {
+    display: flex;
+    flex-direction: column;
+}
+
 .search {
     display: flex;
     justify-content: flex-start;

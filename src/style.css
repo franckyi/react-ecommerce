@@ -108,6 +108,11 @@ body {
   font-size: 18px;
 }
 
+.primary-bar__toolbar {
+  display: flex;
+  flex-direction: column;
+}
+
 .search {
   display: flex;
   justify-content: flex-start;
@@ -132,8 +137,12 @@ body {
 
 .categories-chip {
   justify-content: center;
-  flex-wrap: wrap;
-  row-gap: 10px;
+}
+@media screen and (max-width: 576px) {
+  .categories-chip {
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
 }
 
 html {
