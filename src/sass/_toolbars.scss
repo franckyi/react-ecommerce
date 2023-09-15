@@ -1,3 +1,8 @@
+.top-bar {
+    &__slogan {
+        font-size: clamp(14px, 18px, 18px);
+    }
+}
 .search {
     display: flex;
     justify-content: flex-start;
