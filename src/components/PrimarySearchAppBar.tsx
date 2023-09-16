@@ -11,12 +11,12 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import Cart from './Cart';
 import { Link } from 'react-router-dom';
 import { PrimarySearchAppBarProps } from '../types/primarySearchAppBarProps';
+import { useCart } from '../context/cartContext';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -54,6 +54,7 @@ export default function PrimarySearchAppBar({ allProducts, filters, setFilters }
     const [input, setInput] = React.useState<string>('');
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+    const { totalQuantity } = useCart();
 
     const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
@@ -122,24 +123,17 @@ export default function PrimarySearchAppBar({ allProducts, filters, setFilters }
             onClose={handleMobileMenuClose}
         >
             <MenuItem>
-                <IconButton size="large" aria-label="show your favorite products" color="inherit">
-                    <Badge badgeContent={0} color="error">
-                        <FavoriteBorderOutlinedIcon />
-                    </Badge>
-                </IconButton>
-                <p>Messages</p>
-            </MenuItem>
-            <MenuItem>
                 <IconButton
                     size="large"
                     aria-label="show cart"
                     color="inherit"
                 >
-                    <Badge badgeContent={17} color="error">
+                    <Badge badgeContent={totalQuantity} color="error">
                         <ShoppingCartOutlinedIcon />
                     </Badge>
                 </IconButton>
-                <p>Notifications</p>
+
+                <p>Cart</p>
             </MenuItem>
             <MenuItem onClick={handleProfileMenuOpen}>
                 <IconButton
