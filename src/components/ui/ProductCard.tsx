@@ -44,7 +44,7 @@ export default function ProductCard(props: ProductCardProps) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style} className="modal-box">
-          <div className="col">
+          <div className="col modal-box__title">
             <Typography id="modal-modal-title" sx={{ fontSize: 18, fontWeight: 800, maxWidth: '70%' }} component="h3">
               {props.item.title}
             </Typography>
@@ -57,7 +57,7 @@ export default function ProductCard(props: ProductCardProps) {
             />
           </div>
 
-          <div className="col">
+          <div className="col modal-box__description">
             <div className="rating">
               <Rating
                 name="simple-controlled"
@@ -77,7 +77,7 @@ export default function ProductCard(props: ProductCardProps) {
             <Typography id="modal-modal-description" sx={{ fontSize: 14 }}>
               {props.item.description}
             </Typography>
-            <div className="d-flex">
+            <div className="d-flex modal-box__price">
               <BasicButtonGroup currentProduct={props.item} />
               <Typography gutterBottom sx={{ fontWeight: 800 }} component="div" className='product-list__item--price'>
                 $ {quantity === 0 ? props.item.price.toFixed(2) : (props.item.price * quantity).toFixed(2)}
@@ -87,6 +87,7 @@ export default function ProductCard(props: ProductCardProps) {
             {quantity <= 0 && <Button onClick={() => handleIncrementClick(props.item.id, props.item.price, quantity)} size="small" color="primary" variant="outlined">Add to cart</Button>}
             {quantity > 0 && <Button onClick={() => removeFromCart(props.item.id, itemTotalPrice)} size="small" color="error" variant="contained">Remove</Button>}
             <img
+              className='modal-box__payment-img'
               src="payments.png"
               alt="Our payment methods"
               width="300"

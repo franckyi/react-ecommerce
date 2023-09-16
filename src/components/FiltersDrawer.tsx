@@ -35,7 +35,7 @@ export default function FiltersDrawer({ handleResetFilters, filters, setFilters 
                 onOpen={toggleDrawer(true)}
                 className='drawer'
             >
-                <div className="d-flex">
+                <div className="d-flex drawer__sliders">
                     <PriceSlider filters={filters} setFilters={setFilters}/>
                     <RatingSlider filters={filters} setFilters={setFilters} />
                 </div>

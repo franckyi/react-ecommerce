@@ -104,13 +104,20 @@ body {
   font-weight: 700;
 }
 
-.top-bar__slogan {
-  font-size: 18px;
+.top-bar a:visited, .top-bar a:focus, .top-bar a:focus-visible, .top-bar a:active {
+  color: #333;
+  font-size: 14px;
 }
 
-.primary-bar__toolbar {
-  display: flex;
-  flex-direction: column;
+.primary-bar {
+  background: #2f4871;
+}
+@media screen and (min-width: 768px) {
+  .primary-bar {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+  }
 }
 
 .search {

@@ -1,8 +1,19 @@
 .drawer {
     .MuiPaper-root {
+        @media screen and (max-width: 576px) {
+            height: 80%;
+            padding: 20px;
+        }
         height: 350px;
         justify-content: center;
         gap: 3rem;
         padding: 20px 20%;
+    }
+
+    &__sliders {
+        @media screen and (max-width: 576px) {
+            flex-direction: column;
+            gap: 3rem;            
+        }
     }
 }
