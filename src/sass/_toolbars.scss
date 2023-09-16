@@ -1,4 +1,5 @@
 .top-bar {
+    padding: 5px;
     @media screen and (min-width: 768px) {
         display: flex;
         justify-content: space-between;
@@ -17,11 +18,13 @@
 }
 
 .primary-bar {
+    @media screen and (max-width: 576px) {
+        margin-bottom: 20px;
+    }
     &__toolbar {
         padding-top: 15px;
         flex-direction: column;
         @media screen and (min-width: 768px) {
-            // display: flex;
             flex-grow: 1;
             flex-direction: row;        
         }

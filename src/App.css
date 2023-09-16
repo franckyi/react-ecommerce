@@ -2,7 +2,11 @@ main {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  row-gap: 1rem;
+}
+@media screen and (min-width: 768px) {
+  main {
+    row-gap: 1rem;
+  }
 }
 
 h2 {
@@ -135,6 +139,9 @@ body {
   font-weight: 700;
 }
 
+.top-bar {
+  padding: 5px;
+}
 @media screen and (min-width: 768px) {
   .top-bar {
     display: flex;
@@ -147,6 +154,11 @@ body {
   font-size: 18px;
 }
 
+@media screen and (max-width: 576px) {
+  .primary-bar {
+    margin-bottom: 20px;
+  }
+}
 .primary-bar__toolbar {
   padding-top: 15px;
   flex-direction: column;
