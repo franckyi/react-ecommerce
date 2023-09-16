@@ -122,19 +122,6 @@ export default function PrimarySearchAppBar({ allProducts, filters, setFilters }
             open={isMobileMenuOpen}
             onClose={handleMobileMenuClose}
         >
-            <MenuItem>
-                <IconButton
-                    size="large"
-                    aria-label="show cart"
-                    color="inherit"
-                >
-                    <Badge badgeContent={totalQuantity} color="error">
-                        <ShoppingCartOutlinedIcon />
-                    </Badge>
-                </IconButton>
-
-                <p>Cart</p>
-            </MenuItem>
             <MenuItem onClick={handleProfileMenuOpen}>
                 <IconButton
                     size="large"
@@ -183,6 +170,7 @@ export default function PrimarySearchAppBar({ allProducts, filters, setFilters }
                         </IconButton>
                     </Box>
                     <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+                        <Cart allProducts={allProducts} />
                         <IconButton
                             size="large"
                             aria-label="show more"

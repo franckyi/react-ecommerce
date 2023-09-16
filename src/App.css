@@ -209,6 +209,27 @@ body {
   }
 }
 
+@media screen and (max-width: 576px) {
+  .MuiDrawer-paper {
+    max-width: 90%;
+  }
+  .MuiDrawer-paper .MuiBox-root {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .product-title {
+    max-width: 200px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .product-quantity-btns button {
+    min-width: 24px;
+  }
+}
+
 .categories-chip {
   justify-content: center;
 }

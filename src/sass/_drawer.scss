@@ -17,3 +17,26 @@
         }
     }
 }
+
+.MuiDrawer-paper {
+    @media screen and (max-width: 576px) {
+        max-width: 90%;
+        .MuiBox-root {
+            width: 300px;
+        }
+    }
+}
+
+.product-title {
+    @media screen and (max-width: 576px) {
+        max-width: 200px;
+    }
+}
+
+.product-quantity-btns {
+    @media screen and (max-width: 576px) {
+        button {
+            min-width: 24px;
+        }
+    }
+}

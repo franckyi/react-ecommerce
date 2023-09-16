@@ -71,7 +71,6 @@ export default function Cart(props: CartProps) {
                         anchor={anchor}
                         open={state['bottom']}
                         onClose={toggleDrawer('bottom', false)}
-                        className='cart__drawer'
                     >
                         {list('bottom')}
                     </Drawer>

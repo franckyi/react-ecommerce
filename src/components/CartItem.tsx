@@ -20,8 +20,10 @@ export function CartItem(props: TCartItemProps) {
             />
             <Typography className="product-title" sx={{ fontSize: 15, marginLeft: '10px', marginRight: '15px' }}>{item.title.substring(0, 25)}</Typography>
             <Typography sx={{ fontSize: 15, marginLeft: '10px', marginRight: '15px' }}>({getItemQuantity(item.id)}) <b>$ {getItemQuantity(item.id) * item.price}</b></Typography>
-            <Button onClick={() => handleDecrementClick(item.id, item.price, getItemQuantity(item.id))} sx={{ fontSize: 12, padding: 0, width: '10px' }} variant="outlined" color="primary">-</Button>
-            <Button onClick={() => handleIncrementClick(item.id, item.price, getItemQuantity(item.id))} sx={{ fontSize: 12, padding: 0, width: '10px', marginLeft: '5px' }} variant="outlined" color="primary">+</Button>
+            <div className="product-quantity-btns">
+                <Button onClick={() => handleDecrementClick(item.id, item.price, getItemQuantity(item.id))} sx={{ fontSize: 12, padding: 0, width: '10px' }} variant="outlined" color="primary">-</Button>
+                <Button onClick={() => handleIncrementClick(item.id, item.price, getItemQuantity(item.id))} sx={{ fontSize: 12, padding: 0, width: '10px', marginLeft: '5px' }} variant="outlined" color="primary">+</Button>
+            </div>
         </ListItem>
     )
 }
