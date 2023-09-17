@@ -6,17 +6,14 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
-import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import Cart from './Cart';
 import { Link } from 'react-router-dom';
 import { PrimarySearchAppBarProps } from '../types/primarySearchAppBarProps';
-import { useCart } from '../context/cartContext';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -54,7 +51,6 @@ export default function PrimarySearchAppBar({ allProducts, filters, setFilters }
     const [input, setInput] = React.useState<string>('');
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-    const { totalQuantity } = useCart();
 
     const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);

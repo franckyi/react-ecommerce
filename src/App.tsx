@@ -15,7 +15,6 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState<TFilters>(filterInitialState);
 
-  // setFilters directly from children
   const handleResetFilters = () => {
     setFilters(filterInitialState)
   }
