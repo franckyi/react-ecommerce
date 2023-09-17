@@ -85,7 +85,8 @@ body {
 @media screen and (max-width: 576px) {
   .modal-box {
     max-width: 70%;
-    max-height: 70%;
+    max-height: 80%;
+    overflow: auto;
   }
 }
 @media screen and (max-width: 576px) {

@@ -31,7 +31,7 @@ export default function ProductCard(props: ProductCardProps) {
   const { item } = props;
   const itemTotalPrice: number = item.price * quantity;
 
-  // MODAL
+  // START MODAL
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
